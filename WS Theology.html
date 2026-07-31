@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wisdom Theology — David Yeom</title>
+<meta name="description" content="Wisdom Theology: a study of God's character through holiness, justice, compassion, and wisdom, by David Yeom.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #14161f;
+    --ink-soft: #1b1e29;
+    --parchment: #f6f0e2;
+    --parchment-soft: #efe6cf;
+    --charcoal: #26241c;
+    --charcoal-soft: #5c5643;
+    --gold: #a8843f;
+    --gold-bright: #c9a15c;
+    --sage: #566554;
+    --rule: rgba(38,36,28,0.18);
+    --rule-dark: rgba(246,240,226,0.16);
+    --measure: 42.5rem;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--parchment);
+    color:var(--charcoal);
+    font-family:'Newsreader', Georgia, serif;
+    font-size:1.09rem;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', Georgia, serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+  a{color:inherit;}
+  #rail{position:fixed; top:0; right:0; width:3px; height:100%; background:transparent; z-index:60;}
+  #rail-fill{width:100%; height:0%; background:linear-gradient(180deg, var(--gold-bright), var(--gold)); transition:height 0.05s linear;}
+  @media (max-width:720px){
+    #rail{width:100%; height:3px; top:0; left:0; right:auto;}
+    #rail-fill{width:0%; height:100%; background:linear-gradient(90deg, var(--gold-bright), var(--gold));}
+  }
+  header.site-nav{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0.85rem 1.6rem;
+    background:rgba(246,240,226,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--rule);
+  }
+  .wordmark{font-family:'Fraunces', serif; font-weight:700; font-size:1.02rem; letter-spacing:-0.01em;}
+  nav.links{
+    display:flex; gap:1.1rem; flex-wrap:wrap; justify-content:flex-end;
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.03em; text-transform:uppercase;
+  }
+  nav.links a{
+    text-decoration:none; color:var(--charcoal-soft);
+    padding-bottom:2px; border-bottom:1px solid transparent;
+    transition:color 0.2s, border-color 0.2s; white-space:nowrap;
+  }
+  nav.links a:hover, nav.links a.active{color:var(--gold); border-color:var(--gold);}
+  @media (max-width:760px){
+    nav.links{display:none;}
+  }
+  .hero{
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(168,132,63,0.12), transparent 60%), var(--ink);
+    color:var(--parchment);
+    min-height:88vh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+    padding:6rem 1.5rem 4rem; position:relative; overflow:hidden;
+  }
+  .hero::before{
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(1px 1px at 20% 30%, rgba(246,240,226,0.35), transparent),
+      radial-gradient(1px 1px at 70% 65%, rgba(246,240,226,0.25), transparent),
+      radial-gradient(1px 1px at 85% 20%, rgba(246,240,226,0.3), transparent),
+      radial-gradient(1px 1px at 40% 80%, rgba(246,240,226,0.2), transparent),
+      radial-gradient(1px 1px at 55% 15%, rgba(246,240,226,0.25), transparent);
+    pointer-events:none;
+  }
+  .hero-eyebrow{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold-bright); margin-bottom:1.6rem;}
+  .hero h1{font-size:clamp(2.6rem, 7vw, 5rem); line-height:0.98; max-width:16ch;}
+  .hero .subtitle{margin-top:1.3rem; font-family:'Newsreader', serif; font-style:italic; font-size:1.15rem; color:rgba(246,240,226,0.75); max-width:34ch;}
+  .hero .byline{margin-top:2.2rem; font-family:'IBM Plex Mono', monospace; font-size:0.78rem; letter-spacing:0.08em; color:rgba(246,240,226,0.55);}
+  .hero .verse{margin-top:3.4rem; max-width:26ch; font-family:'Fraunces', serif; font-weight:600; font-size:1.3rem; line-height:1.5; color:rgba(201,161,92,0.9);}
+  .scroll-cue{position:absolute; bottom:2.2rem; left:50%; transform:translateX(-50%); width:1px; height:34px; background:linear-gradient(180deg, transparent, var(--gold-bright)); animation:pulse-cue 2.4s ease-in-out infinite;}
+  @keyframes pulse-cue{0%,100%{opacity:0.25;} 50%{opacity:0.9;}}
+  .contents{max-width:680px; margin:0 auto; padding:4.5rem 1.6rem 3.5rem; text-align:center;}
+  .contents p.lede{font-size:1.06rem; color:var(--charcoal-soft); max-width:48ch; margin:0 auto 2.4rem;}
+  .toc{display:flex; flex-direction:column; gap:0; border-top:1px solid var(--rule);}
+  .toc a{
+    display:flex; align-items:baseline; justify-content:space-between;
+    padding:1.05rem 0.3rem; text-decoration:none; border-bottom:1px solid var(--rule);
+    transition:padding-left 0.25s ease, color 0.25s ease;
+  }
+  .toc a:hover{padding-left:0.6rem; color:var(--gold);}
+  .toc .num{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--gold); letter-spacing:0.06em; flex-shrink:0; width:2.6rem; text-align:left;}
+  .toc .name{font-family:'Fraunces', serif; font-weight:600; font-size:1.1rem; flex:1; text-align:left; padding-left:0.4rem;}
+  .toc .ref{font-family:'IBM Plex Mono', monospace; font-size:0.66rem; color:var(--charcoal-soft); text-align:right; max-width:14ch;}
+  section.chapter{max-width:var(--measure); margin:0 auto; padding:5rem 1.6rem 2rem;}
+  .chapter-head{margin-bottom:2.6rem;}
+  .chapter-head .eyebrow{margin-bottom:0.8rem;}
+  .chapter-head h2{font-size:clamp(2rem, 5vw, 2.7rem);}
+  .chapter h3.sub{
+    margin:3.2rem 0 1.2rem;
+    font-size:1.35rem;
+    color:var(--gold);
+    border-bottom:1px solid var(--rule);
+    padding-bottom:0.6rem;
+  }
+  blockquote.scripture{
+    margin:2rem 0; padding:1.4rem 1.6rem; background:var(--parchment-soft);
+    border-left:2px solid var(--gold); font-family:'Newsreader', serif; font-style:italic;
+    font-size:1.03rem; color:var(--charcoal); line-height:1.8;
+  }
+  blockquote.scripture cite{
+    display:block; margin-top:0.7rem; font-style:normal; font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--charcoal-soft);
+  }
+  .chapter p{margin:0 0 1.35rem;}
+  .chapter p.lede-para::first-letter{
+    font-family:'Fraunces', serif; font-weight:700; font-size:3.4rem; float:left;
+    line-height:0.85; padding-right:0.12em; padding-top:0.05em; color:var(--gold);
+  }
+  .chapter em{font-style:italic;}
+  .refrain{
+    text-align:center; margin:2.6rem 0 0; font-family:'Fraunces', serif; font-weight:600;
+    font-size:1.15rem; letter-spacing:0.02em; color:var(--gold);
+  }
+  .footnotes{
+    margin:3rem 0 0; padding-top:1.2rem; border-top:1px dashed var(--rule);
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--charcoal-soft); line-height:1.9;
+  }
+  .footnotes li{margin-bottom:0.4rem;}
+  .divider{
+    display:flex; align-items:center; justify-content:center; gap:1rem;
+    max-width:var(--measure); margin:4.5rem auto; padding:0 1.6rem; color:var(--gold);
+  }
+  .divider .line{flex:1; height:1px; background:var(--rule);}
+  .divider svg{width:18px; height:18px; flex-shrink:0;}
+  .about{background:var(--ink); color:var(--parchment); padding:5.5rem 1.6rem 6rem;}
+  .about-inner{max-width:var(--measure); margin:0 auto;}
+  .about h2{color:var(--parchment); font-size:clamp(1.8rem, 4vw, 2.3rem); margin-bottom:1.6rem;}
+  .about p{color:rgba(246,240,226,0.78); margin:0 0 1.2rem;}
+  .about .eyebrow{color:var(--gold-bright);}
+  footer{
+    background:var(--ink); color:rgba(246,240,226,0.45); text-align:center; padding:2.2rem 1.6rem 3rem;
+    font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.05em; border-top:1px solid var(--rule-dark);
+  }
+  @media print{
+    header.site-nav, #rail, .scroll-cue{display:none;}
+    .hero{min-height:auto; background:none; color:var(--ink);}
+    .hero .verse, .hero-eyebrow, .hero .byline{color:var(--charcoal-soft);}
+    .about{background:none; color:var(--charcoal);}
+    .about p{color:var(--charcoal-soft);}
+  }
+</style>
+</head>
+<body>
+
+<div id="rail"><div id="rail-fill"></div></div>
+
+<header class="site-nav">
+  <div class="wordmark">Wisdom Theology</div>
+  <nav class="links">
+    <a href="#ch1">I</a><a href="#ch2">II</a><a href="#ch3">III</a>
+    <a href="#ch4">IV</a><a href="#ch5">V</a><a href="#ch6">VI</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-eyebrow">A Study of God&rsquo;s Character</div>
+  <h1>Wisdom&nbsp;Theology</h1>
+  <p class="subtitle">Holiness, justice, compassion, and wisdom&mdash;the character of God, traced from Genesis to the cross</p>
+  <p class="byline">by David Yeom</p>
+  <p class="verse">&ldquo;God is good&mdash;all the time.&rdquo;</p>
+  <div class="scroll-cue"></div>
+</section>
+
+<div class="contents">
+  <p class="lede">Not a book about proof-texts, but about a person. Six chapters trace what it means to know God&mdash;His holiness, His justice, His compassion, and the wisdom that holds it all together in Christ.</p>
+  <div class="toc">
+    <a href="#ch1"><span class="num">I</span><span class="name">Introduction to Wisdom Theology</span><span class="ref">Why character, not code</span></a>
+    <a href="#ch2"><span class="num">II</span><span class="name">Good and Evil</span><span class="ref">Cain, Abel &amp; the Law</span></a>
+    <a href="#ch3"><span class="num">III</span><span class="name">First Attribute: Holiness</span><span class="ref">Allergic, Transferable, Perfect</span></a>
+    <a href="#ch4"><span class="num">IV</span><span class="name">Second Attribute: Justice</span><span class="ref">Reciprocal to Sanctifying</span></a>
+    <a href="#ch5"><span class="num">V</span><span class="name">Third Attribute: Compassion</span><span class="ref">Heart &amp; Immanuel</span></a>
+    <a href="#ch6"><span class="num">VI</span><span class="name">Fourth Attribute: Wisdom</span><span class="ref">Word, Humility, Fear, Peace, Life, Suffering</span></a>
+    <a href="#about"><span class="num">&mdash;</span><span class="name">About the Author</span><span class="ref"></span></a>
+  </div>
+</div>
+
+<section class="chapter" id="ch1">
+  <div class="chapter-head">
+    <div class="eyebrow">Chapter One</div>
+    <h2>Introduction to Wisdom Theology</h2>
+  </div>
+
+  <blockquote class="scripture">&ldquo;In those days Israel had no king; everyone did as they saw fit.&rdquo;<cite>Judges 21:25</cite></blockquote>
+
+  <p class="lede-para">Postmodernism. While good on paper, in real life, its practice in terms of ethics is perhaps nothing short of chaos and not so different from Israel, as the verse above suggests from many thousands of years ago. The heart of the matter is the lack of a standard by which one is to judge what is right and wrong, which I believe is what wisdom is all about. For is it not an understatement that we Christians are facing an increasingly difficult time making the right call, let alone being sure of it with absolute certainty, in this day and age?</p>
+
+  <p>For the longest time, the Church has wielded her Bible as both a sword and a shield against the moral obscurity of the day, presenting it as the golden standard for all Christians to follow. However, for this to work, there had to be clear boundaries and interpretations of the text. Without them, there can be no clear moral standards, and dissension would arise that could well undermine the church&rsquo;s authority. In fact, it is the exact challenge we face today and one of the reasons for writing this book.</p>
+
+  <p>Over the years, the Church has responded with various doctrines in her effort to defend the truth, and among those doctrines was the doctrine of biblical inerrancy. Many Christian denominations have embraced this doctrine, and to this day, they are quite upfront about it. To an extent, this has served the initial purpose; by stating that the Bible is free of errors hands down, questions were silenced and peace, however temporary, was restored.</p>
+
+  <p>And temporary it was. With fewer questions, the faculty of the mind among the flock became increasingly dull and lax, and the sharpest of them either turned their backs on the Church, who could no longer be reasoned with, or started developing their own humanistic ideas in an effort to answer where the Church has failed them. Ironically, this doctrine, which appeared roughly two centuries ago and has since been signed and sealed through the Chicago Statement on Biblical Inerrancy in 1978 to defend the Church and her authority both inside and out, seems to have thoroughly undermined the Church in more ways than one can count. Since then, the Church has witnessed her sharpest decline in both attendance and authority, and let us be honest, the younger generation is turning away at an alarming rate because the teachings of the Church simply do not make sense and are simply unrelatable.</p>
+
+  <p>It seems that ever since the Enlightenment, people have really started looking for alternative answers outside the Church. Before the Enlightenment, the Church had a final say in many, if not most, matters that were both physical and spiritual. Seeing that science produced tangible results that could be reasoned with, people abandoned faith in hundreds and thousands. As the knowledge of the world about us increased, the Church found herself with a lesser role in people&rsquo;s lives and an increasingly diminishing influence. In her defense, the doctrine of biblical inerrancy was supposed to solve all her problems and elevate her power as it once was. But when it was all said and done, even more Christians were put off by it, and the Church&mdash;we&mdash;became the laughing stock of the world.</p>
+
+  <p>The crux of the matter was this: for obvious reasons, the doctrine heavily relied on the infallibility of God, who is absolutely holy, and in its effort to counter the world, had this exclusive attribute of God cross over to the written text as well. Verses such as they appear in 2 Timothy have become their popular reference, which reads, &ldquo;All Scripture is God-breathed and is useful for teaching, rebuking, correcting and training in righteousness, so that the servant of God may be thoroughly equipped for every good work&rdquo; (3:16&ndash;17). Do not get me wrong. I am not saying the Scripture is filled with errors and cannot be trusted; I am saying putting the Scripture on the same level as God Himself is wrong, as it is bibliolatry.</p>
+
+  <p>The truth is the Scripture is a culmination of divine inspiration and physical, human efforts. It is holy insofar as it testifies about the one, triune God and who He is, but it is still a book physically written and bound by humans. One cannot gain anything by getting stuck on questions like, &ldquo;Why does the Bible say insects have four legs when they obviously have six?&rdquo; We need to wake up and remind ourselves and others that the Scripture is not a science book that lists all the facts we need to know, proven meticulously by repeated experiments, but a collection of holy testimonies that singularly point to who God is and why we simply cannot but worship Him. The focus is not on what but on who.</p>
+
+  <p>What about ethics and morality? Granted, having a written code of conduct for almost anything can be convenient; all we have to do is study the individual laws inside and out and simply follow them. However, have we not seen how much it has cost us already? Did not the Church suffer endless dissensions and stunted faith from this? Is it also not responsible for the anachronism and irrelevance that we as the Church have been blamed for because we have been blinded by what and failed to see who?</p>
+
+  <p>One of the beautiful things about the Gospel and the coming of Jesus Christ is that it is a story that is still ongoing. It is a story that involves God, the Son, and the Holy Spirit. But the best part is that we get to have a meaningful, profound relationship with the Trinity because God first loved us, not the other way around. The Gospel is the story of how the perfect God loved the imperfect world and how, in His infinite wisdom, He made the necessary adjustments so that we could live and be united in His love.<sup>1</sup></p>
+
+  <p>Judging based on the text is quick and easy, but true love is one that is patient, as God is patient. This book that we call the Scripture was not written so that we could point fingers at each other, but so that we could learn in depth about God the Father, the Son, and the Holy Spirit. Only when we come to know God can we truly begin to love God and others. The Scripture was written to point us toward God.</p>
+
+  <p>Believing in Jesus Christ, who is the Wisdom of God, means believing also in the wisdom that only he can give through the Holy Spirit. When God makes His home in us and we in Him, the text&mdash;a light&mdash;must give way to the light giver. The two cannot be incongruous in theory, but God is above all understanding, and man-made theories do not apply to God. For this reason, the Apostle Paul writes, &ldquo;Therefore, there is now no condemnation for those who are in Christ Jesus, because through Christ Jesus the law of the Spirit who gives life has set you free from the law of sin and death&rdquo; (Romans 8:1&ndash;2). Again, &ldquo;But the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control. Against such things there is no law&rdquo; (Galatians 5:22&ndash;23). Also, to the Apostle Peter, who refused to eat ceremonially unclean animals, God says, &ldquo;Do not call anything impure that God has made clean&rdquo; (Acts 10:15). How, then, can anyone dare place the text on the same level as God?</p>
+
+  <p>In his earthly ministry, Jesus experienced a lot of friction with the Pharisees, the Sadducees, and the teachers of the law, too, because they could not understand how a mere man could challenge the Law and the Prophets. For example, in Luke 6, Jesus&rsquo;s disciples are seen picking grain heads on a Sabbath. When accused of breaking the law, Jesus refers to David and his men, who once entered the house of God and ate the consecrated bread, something also unlawful to do. He then adds, &ldquo;The Son of Man is Lord of the Sabbath&rdquo; (Luke 6:5). As if the incident was not enough to make his point, Luke inserts another incident immediately after, where Jesus cures a man with a shriveled hand on a Sabbath. When the Pharisees and the teachers of the law demand an answer for doing something unlawful, Jesus says, &ldquo;I ask you, which is lawful on the Sabbath: to do good or to do evil, to save life or to destroy it?&rdquo; (Luke 6:9). The Jewish leaders probably thought they were fulfilling their responsibility of keeping themselves and others &ldquo;holy&rdquo; before God. What they did not know was that the man they were accusing was God, who &ldquo;makes [them] holy&rdquo; (Leviticus 20:8b).</p>
+
+  <p>Consequently, Jesus teaches, &ldquo;Do not think that I have come to abolish the Law or the Prophets; I have not come to abolish them but to fulfill them&rdquo; (Matthew 5:17). The Greek word for &ldquo;fulfill&rdquo; here can also be translated as &ldquo;make complete.&rdquo; By becoming human, Jesus not only came to save us from our sins but also to show us the way to live with God in harmony in the most tangible way possible.</p>
+
+  <p>The ultimate question then is this: What is right and what is wrong? Ironically, while Scripture plays a vital role in answering the question, it is not the answer. The answer is God. We need to know God to understand His heart, just as David did. In particular, we need to study Jesus Christ, the Word and Wisdom of God, &ldquo;in whom are hidden all the treasures of wisdom and knowledge&rdquo; (Colossians 2:3). It may sound impossible, but I sincerely believe that we can lead a blameless life when we know and understand God through Jesus Christ, by the Holy Spirit. If wisdom is the ability to judge right and wrong that is acceptable to God, it begins here by learning the character of God and His absolute attributes. This is wisdom theology.</p>
+
+  <p>For reasons that may be obvious by now, this book is written to serve the body of Christ, including those who are on the fringe and those who are hurt by the Church. God loves you. God wants you. God knows all about you, and now He wants you to know Him. Know Him and live.<sup>2</sup></p>
+
+  <h3 class="sub">Context</h3>
+
+  <p>Before diving into the subject of God&rsquo;s character, which is what this book is all about, it seems appropriate to share how this book came to be and what purpose it is meant to serve.</p>
+
+  <p>The context in which this book finds itself, as mentioned earlier, is the rapid decline of the Church and her diminishing presence&mdash;and her light and saltiness&mdash;within the contemporary world. Jesus said, &ldquo;But if the salt loses its saltiness, how can it be made salty again? It is no longer good for anything, except to be thrown out and trampled underfoot&rdquo; (Matthew 5:13b). Having experienced firsthand the many pains of the Church caused by differing views of God, divisive interpretations of the Bible, and moral and ethical chaos thereof, I hereby muster all my courage to share what I have found truthful and that which might help heal and strengthen the body of Christ.</p>
+
+  <p>Admittedly, I am still young, but this book has been in development for exactly a decade, since the year I received my bachelor&rsquo;s in 2014. For my final project in the honors program, I wrote about the four attributes of God&mdash;the same ones as listed in the current book&mdash;as I had observed in my undergraduate years of studying theology. However, for a brief time after graduation, I became an agnostic and refused to believe in God. I was troubled by the Church&rsquo;s contentious views of God, chiefly arising from varying methods of exegesis. And I knew my chances of finding an answer were slim in theological books, however intelligent or ancient, since my experience of reading such books in college was what led me to more doubts than convictions. I was restless for a while, and then I reread Kierkegaard.</p>
+
+  <p>By the grace of God, at the most perilous point of my faith&rsquo;s journey, Kierkegaard, in his exposition on the tragic hero and the knight of faith, taught me something that I had overlooked for so long: that God is essentially a person, too&mdash;Three Persons in One&mdash;just as much as I am a person with a unique personality. My internal struggle that was driving me to the wall was not mine alone, but God&rsquo;s also. I realized that somewhere along the line, God had become a construct for me, and that &ldquo;knowing&rdquo; God entailed only literal pieces of knowledge from the Scripture and elsewhere, which are as good as dead, when God is, as the Scripture says, &ldquo;not the God of the dead but of the living&rdquo; (Matthew 22:32b). As it is written: &ldquo;the letter kills, but the Spirit gives life&rdquo; (2 Corinthians 3:6b). It was then that I was reminded of my half-baked honors project, a piece about God&rsquo;s character. I immediately went back to it and started rewriting it, marking the fetal stage of this book.</p>
+
+  <p>That simple realization that God is a person&mdash;not in the anthropological sense, of course&mdash;which seems so blatantly obvious and, at the same time, not, struck me so hard that it crushed all my questions about the particulars, the traditions, the bits and pieces of numbing doubts, and even the toughest and the darkest theodicies. I came to understand that it was about who, not what.</p>
+
+  <p>Then I began to trace back the problem. How did I get here? Why did I not see this before? Since when did God become a construct rather than a person? Coming from a conservative Presbyterian background, I came to the following conclusion: ad fontes, or back to the sources. During the Reformation, the slogan served as an effective wake-up call to the corrupt Catholic Church, but over the years, the phrase seemed to have left the Church devoid of God and full of text. Sola scriptura seemed to have taken the throne and ascended above all five solas, surpassing even Solus Christus. The upshot was the elevation of the text to the point of bibliolatry, however unintentional, leaving the testimony of God and His character in oblivion.</p>
+
+  <p>Therefore, I humbly propose that only when the Old and New Testaments become truly testaments can we expect the Church to grow and mature in Christ, who has become the ultimate testimony of God the moment he was conceived by the Holy Spirit. Our aim should not be how much we know about the Scripture, but how much we know about God, the Three in One. For the same reason, our slogan should no longer be ad fontes nor sola scriptura, but simply ad Christus and solus Christus. We must remember Jesus&rsquo;s following prayer before he was taken: &ldquo;Now this is eternal life: that they know you, the only true God, and Jesus Christ, whom you have sent&rdquo; (John 17:3).</p>
+
+  <p>Does this mean we can neglect the Scripture? Not in the slightest! As a vast collection of real-life testimonies about God, composed and compiled over thousands of years, the Scripture remains hugely important. It is the single most important tool given to us that reveals much about who God is&mdash;His likes and dislikes, for instance&mdash;in various contexts and times, and one can learn a great deal about discerning the will of God by studying it. That said, we must not forget that the Scripture is called Holy Scripture only because of its subject matter, God; it should never be used to cast a shadow over the very Creator and the author of the book, lest one fall for bibliolatry.</p>
+
+  <p>Finally, the title of this book is Wisdom Theology, and this is because it is only Jesus, the Wisdom of God, through whom we can come to know the triune God. And knowing God is vital; the moment we fail to recognize our own shepherd, we are as good as dead, like scattered sheep. As Jesus said, we can do &ldquo;nothing apart from [him]&rdquo; (John 15:5b). This &ldquo;nothing&rdquo; is not just a figure of speech; it is literal. Apart from the Son of God, there is no wisdom that leads us to the Father, the giver of the Spirit, and without the Spirit, there is no holiness; and we know &ldquo;without holiness no one will see the Lord&rdquo; (Hebrews 12:14). Without wisdom, the years we spend on earth and all our toil under the sun will truly be meaningless, and whatever we try to cultivate, whether it is our character or wealth, it will eventually come to nothing. What is kindness, apart from God? What is love, apart from God? What is good at all, apart from God? We are indeed nothing without Christ.</p>
+
+  <p>Conversely, we can do all things with Christ. We can ask for anything in his name, and we will receive it (Luke 1:37; John 14:14). Paul thus confesses, &ldquo;I can do all this through him who gives me strength&rdquo; (Philippians 4:13). When we truly get to know God and understand His heart, even the toughest decisions become no longer tough, for if God is for us, who can be against us? Can anyone condemn us for picking the grain heads on a Sabbath? I am not talking about a free pass here. I am talking about seeking and doing the will of God per Jesus&rsquo;s warning: &ldquo;Not everyone who says to me, &lsquo;Lord, Lord,&rsquo; will enter the kingdom of heaven, but only the one who does the will of my Father who is in heaven&rdquo; (Matthew 7:21). Knowing God and His character matters because it molds us and shapes us in God&rsquo;s own likeness and heart, after true imago Dei. In other words, it is the beginning and the end of sanctification.</p>
+
+  <p>Therefore, we must do all we can to know God and His character: &ldquo;For I desire steadfast love and not sacrifice, the knowledge of God rather than burnt offerings&rdquo; (Hosea 6:6, ESV). And we must not hide the knowledge: &ldquo;&lsquo;But let the one who boasts boast about this: that they have the understanding to know me, that I am the Lord, who exercises kindness, justice and righteousness on earth, for in these I delight,&rsquo; declares the Lord&rdquo; (Jeremiah 9:24). If we were to pick role models from the OT, we ought to pick David, whose heart was after God, and Enoch, who walked with Him (1 Samuel 13:14; Genesis 5:21&ndash;24). To grow in this knowledge, we should read the Bible diligently, meditate on it, and pray to God in the name of Jesus, with the help of the Spirit, for wisdom and revelation (Ephesians 1:17). But most importantly, we must always look to Jesus, the Wisdom of God, the &ldquo;radiance of God&rsquo;s glory and the exact representation of his being, sustaining all things by his powerful word&rdquo; (Hebrews 1:3a). True theology does not center around the text; it centers around God alone, Christ alone, and the Spirit alone&mdash;the Three Persons in One.</p>
+
+  <p>But getting to know someone takes time and effort. Also, like many other things, it starts one baby step at a time. Hence the next chapter: Good and Evil.</p>
+
+  <ol class="footnotes">
+    <li>See Matthew 21:33&ndash;46.</li>
+    <li>See Hosea 4:6.</li>
+  </ol>
+</section>
+
+<div class="divider">
+  <div class="line"></div>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2c1.8 3 2.8 5.4 2.8 7.4 0 1.9-1.2 3.2-2.8 3.2s-2.8-1.3-2.8-3.2C9.2 7.4 10.2 5 12 2z"/><path d="M12 20v-7"/></svg>
+  <div class="line"></div>
+</div>
+
+<section class="chapter" id="ch2">
+  <div class="chapter-head">
+    <div class="eyebrow">Chapter Two</div>
+    <h2>Good and Evil</h2>
+  </div>
+
+  <p class="lede-para">There is a well-known phrase among Christians: God is good&mdash;all the time. What an encouraging statement! As good as it sounds, however, I am not sure if the majority of Christians actually understand the theological significance of the phrase. That God is good alone is already a powerful statement, but to add to it the three words &ldquo;all the time&rdquo; makes it even more so, which demands some serious faith to truly accept and apply. This is because understanding what is good also unlocks the understanding of what is ungood or evil, and together, they can guide and keep someone on the right path without turning left or right. Conversely, the lack of such understanding can throw them off to the point of complete perishment. Understanding what is good and evil, therefore, is critical for not just us believers but also for any intelligent human being in order to live a good and meaningful life.</p>
+
+  <p>There are a lot of adjectives and modifiers that describe God in and out of Scripture, but at its core, God is essentially and fundamentally good. No circumstance or condition can change this aspect of God, and I am convinced that the author of Hebrews is also referring to this unwavering characteristic of God when he writes, &ldquo;Jesus Christ is the same yesterday and today and forever&rdquo; (Hebrews 13:8). The fact that God is good offers us a reliable moral compass unlike anything or anyone else the world has to offer, and our faith in God basically rests on this rather simple understanding.</p>
+
+  <p>It does get a bit more complicated, however, when it comes to sin, or evil. As a lover of chocolate, I can safely say, &ldquo;Chocolate is good all the time,&rdquo; but I cannot say, &ldquo;Good is chocolate.&rdquo; This is because chocolate has no intrinsic moral value. But with God, the opposite is also quite true: Good is God all the time. In other words, not only is God good all the time, but God also defines what is good. Anything or anyone that is outside of God falls into the category of ungood, evil, or sin. Jesus&rsquo;s teaching/warning about us being able to do nothing apart from him is indeed true in this regard (John 15:5).</p>
+
+  <p>The fact that God is good and is also the source of all that is good is evident from the very beginning. Genesis 1:1 reads, &ldquo;In the beginning God created the heavens and the earth.&rdquo; In describing God&rsquo;s creation work, the first chapter of the first book of the Bible alone lists the word &ldquo;good&rdquo; not just once but seven times. In particular, we see that God is so pleased with His work that all of it seemed &ldquo;very good&rdquo; to Him (1:31). Immediately following in Genesis 2:1, we see God resting on the seventh day, making it holy: &ldquo;Then God blessed the seventh day and made it holy, because on it he rested from all the work of creating that he had done&rdquo; (2:3).</p>
+
+  <p>Notice how everything about God and His work in the beginning chapters is nothing but good. Notice also how all that has been created and touched by Him is described as good and was sanctified later. From this, we know that all good things from the very beginning derive from the Creator God, who is holy and who makes holy. Furthermore, we learn soon afterwards that the power of sin begins to reign as soon as people decide to go against their Maker in their will and action, resulting in the Fall. The first lesson of the Scripture as it testifies to God then is simple yet profound: God is holy and good, and apart from Him, nothing is either holy or good. Therefore, the boundary between good and evil is beyond clear, as Paul writes, &ldquo;Do not be yoked together with unbelievers. For what do righteousness and wickedness have in common? Or what fellowship can light have with darkness?&rdquo; (2 Corinthians 6:14).</p>
+
+  <p>Now then, this is the beginning of ethics and all morality: God is good and without God, nothing is. It is just as St. Augustine reflects in his Confessions on how every good thing traces back to God alone.<sup>3</sup></p>
+
+  <h3 class="sub">The First Murder</h3>
+
+  <p>Perhaps the most telling evidence that the absence of God only leads to evil is found in the tragic story of the first brothers&mdash;and also the first murder.</p>
+
+  <p>After being banished from the Garden of Eden, Adam and Eve had two boys: Cain and Abel. Cain worked the soil while Abel tended to flocks. In time, the two brothers made an offering to God with the things they had. Cain brought &ldquo;some&rdquo; of the fruits from his soil, while Abel brought the &ldquo;best&rdquo; of his flock. It is no surprise that God looked at Abel&rsquo;s more favorably. As we know, Cain did not take this well, and one day, he took the younger one out and killed him in cold blood.</p>
+
+  <p>When God asked Cain about his brother&rsquo;s whereabouts, he answered, &ldquo;I don&rsquo;t know. Am I my brother&rsquo;s keeper?&rdquo; (Genesis 4:9b). Obviously, God, who sees all things, did not have to ask the question to get an answer, but by asking it, He was giving him a second chance, just as He did to his parents when they rebelled against Him in the garden. Unfortunately, Cain failed to redeem even this second chance.</p>
+
+  <p>Before the murder, we see God visiting Cain, warning him, &ldquo;Why are you angry? Why is your face downcast? If you do what is right, will you not be accepted? But if you do not do what is right, sin is crouching at your door; it desires to have you, but you must rule over it&rdquo; (Genesis 4:6&ndash;7). I believe the secret of what is right and wrong lies in this brief warning. Abel&rsquo;s sacrifice was accepted by God, while, in comparison, Cain&rsquo;s was not. What the good God accepts, therefore, is also considered good and righteous, while that which God denies is considered the exact opposite: not good and unrighteous. God&rsquo;s warning to Cain was not simply about self-control and having victory over sin, but more than that, it was about loving God wholeheartedly and always putting Him first, for this is the path to goodness, righteousness, and, really, God Himself.</p>
+
+  <p>To put it more simply, God is telling Cain, &ldquo;Remain in me.&rdquo; Thus, beginning all the way from early Genesis, these three words echo through the entire Old Testament&mdash;to the patriarchs, to the Israelites, and to the whole world. God knows too well that rejecting Him is not just a matter of betrayal but a matter of eternal life and death, the latter being complete perishment where there is nothing good. For this reason, Jesus, upon seeing Jerusalem, laments, &ldquo;Jerusalem, Jerusalem, you who kill the prophets and stone those sent to you, how often I have longed to gather your children together, as a hen gathers her chicks under her wings, and you were not willing&rdquo; (Matthew 23:37). Because God is good all the time and goodness is God Himself, He is eager to see the work of His hands return to Him and live: &ldquo;For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life&rdquo; (John 3:16). And God would rather not use force, although He can, but see us truly delight in Him on our accord in spirit and truth (John 4:24).</p>
+
+  <p>Consequently, in the context of good and evil, the role of free will is critical. It always plays a role. Every day and every moment, we are choosing to be with God or without God; there is no middle ground. God is always knocking, as it were, and always asking, &ldquo;Are you with me?&rdquo;</p>
+
+  <p>In asking Cain his brother&rsquo;s whereabouts, what God is really asking is: &ldquo;I showed you what is right. I showed you what is good and righteous. I asked you to remain in me. What have you done?&rdquo; Through the Law, the prophets, the visions, the miracles, the rise and fall of many kings and kingdoms, the Psalms, the proverbs, and other countless accounts of both the righteous and the unrighteous, God repeats. But at no point in all of history has God repeated the loudest as He did through the person of Jesus Christ, the Son of God: &ldquo;Remain in me, as I also remain in you. No branch can bear fruit by itself; it must remain in the vine. Neither can you bear fruit unless you remain in me&rdquo; (John 15:4). Again, he says, &ldquo;I am the way and the truth and the life. No one comes to the Father except through me&rdquo; (John 14:6).</p>
+
+  <p>If indeed God is good all the time and all good things flow from and through Him, and vice versa, then the single most important job of the Church is to teach the world about God, and especially His character as revealed in Scripture, so that she wins not just the minds of the people but also the hearts and souls as well. We are to be matchmakers, as it were, between God and the people who are still in the dark. If the first murder taught us anything, it is the fact that we must avoid becoming like Cain, who willfully departed from God, and in so doing, everything good.</p>
+
+  <p>Now, it was briefly mentioned above that God revealed Himself through the Law. As part of the Scripture, the Law remains invaluable in understanding God&rsquo;s character with regard to His likes and dislikes. That said, it seems some churches have taken it too far, as some Pharisees had in Jesus&rsquo;s time, treating individual texts in such a manner that they lose sight of God in the process. Put differently, because of our limited understanding of God&rsquo;s character, some of us have become callous and are unable to emulate God, emulating individual texts instead that are right in front of us. The consequences of this are utterly tragic, not just for the pain within but mainly for the gaping toll of souls lost.</p>
+
+  <h3 class="sub">The Law</h3>
+
+  <p>Attention to details can be beneficial, but too much of it can cause us to stumble. In fact, not being able to see the forest is not only shortsighted but also extremely harmful and dangerous.</p>
+
+  <p>Isaiah was an Israelite prophet who prophesied at a time when the northern kingdom of Israel fell to Assyria in 722 BC. The tragic event did not come without a warning, as Israel had plenty of warnings before the fall. Isaiah was one of the prophets who gave such warnings as commanded by God, not just to Israel but also to Judah.</p>
+
+  <p>More specifically, the prophet condemns both nations and their myriad sins against the holy God. In Isaiah 28, therefore, he condemns the leaders whose senses have grown dull to God and the Law&mdash;priests and prophets stumbling over their own decisions like drunkards, reducing God&rsquo;s message to a monotonous string of petty rules that the people, exhausted, refuse to hear (Isaiah 28:7&ndash;15).</p>
+
+  <p>The main issue that God is raising in the above passage is not simply the people&rsquo;s disobedience to the Law. The main issue is that the leaders of the land&mdash;the kings, the priests, the teachers of the Law, and others of high social status&mdash;have failed to teach the people the ways of the LORD, or God&rsquo;s character. Instead, they taught only the text, the cold fine print, disregarding God. God and His unique personhood was missing in their teachings, and as a result, their words became devoid of life. Their ignorance of God and His character as expressed in the Law became their downfall, for their so-called &ldquo;messages&rdquo; and &ldquo;explanations&rdquo; were empty of love for God. If they had had any love for God in their hearts, their teachings would have been more than just &ldquo;do this&rdquo; or &ldquo;do that.&rdquo;</p>
+
+  <p>Because of their limited understanding of God, a result of zeroing in on the text while neglecting the very subject of it, the leaders failed both God and the people. Like teaching the little ones ABC&rsquo;s, the rulers downsized God, whether they had intended it or not, to the point of objectification. They took what was holy, the Law, and turned it into a human device to exercise authority. Their end, therefore, was not a pretty one: falling backward, injuring themselves, and being snared and captured by their own folly (28:13).</p>
+
+  <p>Generally speaking, the law is often cut and dry, and because of this, it can be confusing when it is set side by side with something less tangible, such as love and compassion. However, we must not forget that the Law is only one of many forms of testament concerning God that reveal His character in their own way. The last thing we want is to repeat the same mistake as some fundamentalists have and let it devour us and blind us from seeing God entirely. The text may be cut and dry with little room for interpretation, but if God were that simple, He would not be the relational God we know with a character of His own or Three Persons in One, but only a system. Because God is not a system, the adulterous woman who was brought to Jesus could walk away when all things pointed to her being stoned to death (John 8:1&ndash;11). Because God is not a system, the Gentiles could be gifted with the Holy Spirit when all things pointed to the uncircumcised remaining forever outside of God&rsquo;s holy camp (Acts 10:45). In short, the text must not serve as a barometer of what is right or wrong, or good or evil. God is.</p>
+
+  <p>The true beauty of knowing God is that it allows us to discover the will of God in every situation and helps us make decisions with confidence. God gave us the Law to teach us how to catch a fish. A foolish child would stick to the same exact method to catch the same fish of the same size every single time. A wise child would master the inner workings of the method and catch all kinds of fish of all sizes. Hence the saying of Jesus: &ldquo;Very truly I tell you, whoever believes in me will do the works I have been doing, and they will do even greater things than these, because I am going to the Father&rdquo; (John 14:12). Just as we do not expect God to be a mere system or a robot, God does not expect us to be mere goody-two-shoes. God wants to be truthful and sincere, and although some truths can be hard and painful, God can handle them. More than that, God can set us free with the truth of truths: Jesus Christ, the anointed one.</p>
+
+  <ol class="footnotes">
+    <li>Augustine, <em>Confessions</em>, trans. Sarah Ruden (New York: Modern Library, 2017).</li>
+  </ol>
+</section>
+
+<div class="divider">
+  <div class="line"></div>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2c1.8 3 2.8 5.4 2.8 7.4 0 1.9-1.2 3.2-2.8 3.2s-2.8-1.3-2.8-3.2C9.2 7.4 10.2 5 12 2z"/><path d="M12 20v-7"/></svg>
+  <div class="line"></div>
+</div>
+
+<section class="chapter" id="ch3">
+  <div class="chapter-head">
+    <div class="eyebrow">Chapter Three</div>
+    <h2>First Attribute: Holiness</h2>
+  </div>
+
+  <p class="lede-para">The most basic attribute of God, hence the first one to be introduced in the book, is God&rsquo;s holiness. From cover to cover, the Scripture is quite emphatic about God being holy. Thus records John, the apostle, &ldquo;Holy, holy, holy, is the Lord God Almighty, who was, and is, and is to come&rdquo; (Revelation 4:8). In Genesis, also, holiness is mentioned as God rested from His work and declared the seventh day holy&mdash;the first sanctification (Genesis 2:2&ndash;3).</p>
+
+  <p>In the previous chapter on good and evil, it was said that God is good all the time and that all that is good is found in Him, and vice versa. Consequently, this pure goodness that is always and only found in God is also characterized by holiness, an exclusive attribute of God. For this reason, all good things are also considered holy before God, and the opposite is also true: all things evil are unholy and unfit to be in the presence of the Holy One. In this, the author of Hebrews is quite correct when he says, &ldquo;without holiness no one will see the Lord&rdquo; (Hebrews 12:14b). And one would do well by considering Jesus&rsquo;s parable of the wedding banquet, where a guest without wedding clothes is cast out into the darkness&mdash;&ldquo;for many are invited, but few are chosen&rdquo; (Matthew 22:11&ndash;14).</p>
+
+  <p>The Hebrew word for holiness is translated as &ldquo;set apart&rdquo; or &ldquo;pure.&rdquo; The word itself does not necessarily have hidden meanings or personality traits per se, but it does make one thing quite clear about God: He is exclusive.</p>
+
+  <p>Thus, from what has been said so far about good and evil and holiness&mdash;as brief as it has been&mdash;perhaps the most sound definition of the word &ldquo;holy&rdquo; is &ldquo;pure goodness.&rdquo; When we say God is good, therefore, we are essentially making the confession that God is holy, in whom there is no trace whatsoever that is not good. Sin cannot invade His space. Evil cannot force its way through His throne room. Anything or anyone that is impure cannot set foot inside God&rsquo;s holy abode.</p>
+
+  <p>For this reason, holiness is often described using the analogy of water and oil. Just as the two do not mix, God, who is holy, cannot be together with that which is unholy, lest His exclusivity on that which is good become compromised. Having understood this, David writes, &ldquo;Blessed is the one who does not walk in step with the wicked or stand in the way that sinners take or sit in the company of mockers, but whose delight is in the law of the Lord, and who meditates on his law day and night&rdquo; (Psalm 1:1&ndash;2).</p>
+
+  <p>What does this mean for us? At first, knowing and understanding this most basic attribute of God can cause us despair. As sinners, we simply cannot approach the holy God, let alone discern the will of God. This leads to a life full of sorrow and meaninglessness, as the wisest of men once said, &ldquo;I have seen all the things that are done under the sun; all of them are meaningless, a chasing after the wind&rdquo; (Ecclesiastes 1:14). When God decided to be among Israel, therefore, He gave numerous instructions to Moses and Aaron so that there were at least some safety measures put in place to minimize the damage between the holy and the unholy. Even then, God commands, &ldquo;Be holy because I, the Lord your God, am holy&rdquo; (Leviticus 19:2b).</p>
+
+  <p>The problem of holiness is, in fact, at the crux of the Gospel. But for now, we should take a look at the three key characteristics of holiness as described in Scripture: allergic, transferable, and perfect.</p>
+
+  <h3 class="sub">Holiness as Allergic</h3>
+
+  <p>The title of this subchapter may sound a bit lightweight, if not comedic, but it is only to facilitate an easy understanding by as many as possible. Holiness is a lot like an allergic reaction. A person with an allergy must stay away from anything that causes it to flare. Although every allergy is different in terms of severity, we know that a bad one can be fatal.</p>
+
+  <p>As mentioned already, holiness and unholiness&mdash;or evil&mdash;are like water and oil. They do not and cannot mix. But more than that, the two oppose each other. Like a bad allergy that shows symptoms in a matter of seconds, holiness immediately pushes away and resists that which is unholy.</p>
+
+  <p>When God created the first humans, He treated them like His own children and entrusted to them everything His hands had made. Banishing them from the garden was hardly part of the plan. But when sin entered through Adam, God, who is holy, had to make a truly tough decision. Since God&rsquo;s holiness could not allow anything unholy within its realm, Adam and Eve, now tainted by sin, had to be expelled. Now, God could have turned back the clock and undone the entire creation itself, but that would violate another one of His attributes, which will be explained later. Instead, He made garments for them and showed them what compassion looked like. Yes, He drove them out, as water pushes away the oil, but not completely.</p>
+
+  <p>As a mere creature myself, I will never know with 100% certainty what exactly went on in God&rsquo;s mind at the time, but I believe that even in the darkest moment, God saw something like hope in humanity and spared them. When God could have easily quarantined the unholy somewhere remote to be left alone and die, God did not do that either. The holy God, the good God, still remained by our side, even though it hurt Him. After everything, He still called out to Cain like a father would, saying, &ldquo;Sin is crouching at your door; it desires to have you, but you must rule over it&rdquo; (Genesis 4:7b).</p>
+
+  <p>Down the road, God appears to Moses in the form of a burning bush. Here, we see the holy God drawing the line again between the holy and the unholy. Seeing that a bush is on fire and yet not burning, Moses comes closer to take a better look. Then, Moses hears God say, &ldquo;Do not come any closer. Take off your sandals, for the place where you are standing is holy ground&rdquo; (Exodus 3:5). The first thing Moses learned about God on that historic day, therefore, was not God&rsquo;s justice, God&rsquo;s love, or God&rsquo;s wisdom. The first thing he learned about God was that He is infinitely holy and that holiness comes with territory. And it was not just Moses whom God called that day. That day, God called the entire nation of Israel and made it His own, setting it apart as holy as He is holy (Exodus 3:6).</p>
+
+  <p>While it is a great honor to be claimed by God as holy, it does not come without responsibility. Being nominated and selected as the CEO of a prominent company like Apple or Microsoft, for instance, comes with tremendous influence but also equally tremendous responsibility. Holiness is much the same. It is everything one could ask for, as it keeps us close to God, from whom all good things flow, and away from evil. But as soon as we fail to measure up to God&rsquo;s holiness, the allergy flares up, as it were, and in the worst-case scenario, it can kill us&mdash;not that holiness kills, but the lack thereof.</p>
+
+  <p>Uzzah was one such person who was killed because he did something that violated the standard of holiness set forth by God. Being one of the two men charged with guiding the cart that carried the holy ark of God back to Jerusalem per David&rsquo;s command, Uzzah had a simple yet important responsibility. Thirty-thousand men followed with a loud and passionate celebration, but upon entering the threshing floor of Nakon, the oxen stumbled, and Uzzah reached out his hand to hold the holy ark of God. Whether it was a natural reflex or not, it did not matter. God&rsquo;s anger &ldquo;burned against Uzzah because of his irreverent act; therefore God struck him down, and he died there beside the ark of God&rdquo; (2 Samuel 6:7).</p>
+
+  <p>What the above incident shows is that we must take holiness very seriously. It is not just one of many attributes of God; it is the attribute of God. Just as someone with a peanut allergy cannot afford to overlook the ingredients of anything that goes into the mouth, we cannot afford to overlook holiness and brush it aside&mdash;our lives depend on it.</p>
+
+  <p>In the above case, the ark of God was the holiest object in Israel; containing the two stone tablets given by God, it was the symbol of God&rsquo;s very presence in Israel and the holy covenant between the two. As such, detailed notes on how to manage and carry it were carefully recorded and passed down from one generation to the next, making sure what is holy is not treated with anything less. Unfortunately, David and others overlooked these details and let it be carried by people who were not supposed to carry it, let alone touch it (Exodus 25:12&ndash;14; Numbers 7:9). What they did was quite reckless and irreverent, as the Scripture notes, and Uzzah had to pay the ultimate price.</p>
+
+  <p>We should always aspire to be holy as God is holy, but at the same time, we must not forget the flare this divine attribute carries. Just to be sure, God is not trying to scare us with His holiness. On the contrary, God is trying to protect us with it. Peter thus writes, &ldquo;As obedient children, do not conform to the evil desires you had when you lived in ignorance. But just as he who called you is holy, so be holy in all you do; for it is written: &lsquo;Be holy, because I am holy&rsquo;&rdquo; (1 Peter 1:14&ndash;16). As the most basic attribute of God, holiness is not something God can flick off like a lightswitch and become unholy&mdash;that would be unthinkable! Instead, we must present ourselves as holy and bask in His goodness. God does not demand holiness to make us feel miserable. God demands it so that we can be with Him and He with us.</p>
+
+  <h3 class="sub">Holiness as Transferable</h3>
+
+  <p>The second characteristic of God&rsquo;s holiness is its transferability. This side of holiness is revealed clearly during Isaiah&rsquo;s commission to be a prophet, when a seraph touches his unclean lips with a live coal from the altar and declares his guilt taken away and his sin atoned for (Isaiah 6:1&ndash;7).</p>
+
+  <p>Even though not much is known about the prophet&rsquo;s own personal life, what we do know from the passage above is that he understood the gravity of God&rsquo;s holiness even before he was commissioned. He is seen as absolutely terrified as he realizes he is in the presence of the holy God because he is aware of his current state of being&mdash;a sinner with unclean lips&mdash;and the inevitable outcome when the holy meets the unholy.</p>
+
+  <p>Unlike Uzzah, however, Isaiah did not die. On the contrary, an angel came to him with a live coal from the altar. With it, he touched the prophet&rsquo;s mouth and removed his uncleanliness. In this we see the second characteristic of holiness: its transferability, which is also key to the process we know as sanctification. As in Uzzah&rsquo;s case, holiness can be defiled when something or someone unclean enters its space. But more importantly, the opposite can also happen: that same something or someone characterized by unholiness can be made holy again through the One who is holy by definition. Thus says God, &ldquo;I am the LORD, who makes you holy&rdquo; (Leviticus 20:8b). For the same reason, the Old Testament lists all kinds of temple objects and even the flesh of a sacrificed animal as being able to make people holy when they touch them (Exodus 29:37; 30:25&ndash;29; Leviticus 6:18&ndash;27).</p>
+
+  <p>The transferability of an attribute, a quality, or anything that is real yet intangible and invisible has also been present among humans. The most obvious example from the Scripture, it seems, is Queen Esther, who risked her life by approaching the king without him officially summoning her (Esther 4:11). As it was with Isaiah, death was right around the corner, for the king had both the power to kill and spare those who interrupted him. Just as the live coal took Isaiah&rsquo;s guilt away when it touched his lips, the king&rsquo;s gold scepter held out to Esther meant she was pardoned from violating the royal law that could have cost her life (Esther 5:2).</p>
+
+  <p>Now, someone might wonder: if God can just make anything or anyone holy whenever He wants to, why did He not do that to Uzzah? Why did he have to die? There are two answers. Firstly, as discussed in the previous subchapter, the general rule seems to be that death is an inevitable outcome when the holy and the unholy clash. Exceptions can be made, of course, but they are called exceptions for a reason. Secondly, not just anything or anyone can be made holy. Just as it is unthinkable for Satan to be made holy and become an angel overnight, the subject that is sanctified must first be in the right place and time before any of it begins, and by place I mean the state of the heart, which is also connected to the third and fourth attributes of God. Esther alone, for instance, fasted for three days along with her attendants and all the Jews who were living in Susa and put on her royal robes before presenting herself to the king (Esther 4:16&ndash;5:1). It seems Uzzah was neither an exception nor in the right place or time to be made holy.</p>
+
+  <p>That holiness is exclusive to God cannot be emphasized enough. As such, only God&mdash;and no one else&mdash;can make someone holy, just as the king of Persia was the only one authorized to use the gold scepter.</p>
+
+  <p>Many religions claim to offer peace of mind, transcendence, or some kind of awakening. However, these are all different words for the same thing, which is holiness, the exclusive pathway that leads to pure goodness. The problem is that these religions deny the triune God and attribute the glory to mere creatures rather than the only Creator. We, as Christians, are often accused of being intolerant of other faiths, but really, the issue is not so much about tolerance as it is about the source of holiness.</p>
+
+  <p>According to the Scripture, there simply is no other way. There are no two gold scepters. Jesus says, therefore, &ldquo;I am the way and the truth and the life. No one comes to the Father except through me&rdquo; (John 14:6). Holiness is God&rsquo;s and God&rsquo;s alone. He and only He can give it.</p>
+
+  <p>God&rsquo;s monopoly on holiness, which, as an attribute, is a matter of nature and not choice, is also a good reason to fear Him: &ldquo;Do not be afraid of those who kill the body but cannot kill the soul. Rather, be afraid of the One who can destroy both soul and body in hell&rdquo; (Matthew 10:28). Just as holiness is exclusive to God, this fear is uniquely reserved for God. It is not the kind of fear that someone might have for an armed robbery or a nightmare, but a sense of awe that keeps us in check with God the Creator. It was through this fear that the men and women of God whose stories were recorded in Scripture were able to have a meaningful relationship with Him; it was this fear that kept them humble at all times.</p>
+
+  <p>While holiness can be transferred as simply as touching a coal, historically speaking, it has often involved much more than that. Also a form of atonement, it almost always required some kind of sacrifice with blood that would take on the guilt of the unclean to make them clean. Consequently, in the Old Testament, the guilt of the people would be placed on specific animals without blemish to be sacrificed and to restore holiness. In this way, God&rsquo;s demand for holiness and justice was met, and He forgave the people. This was God&rsquo;s way to be together with His people and a solution to overcome the impossible rift between the holy and the unholy. However, the people&rsquo;s hearts and minds were too callous to maintain this bridge, so God sent His only Son, Jesus Christ&mdash;Immanuel.</p>
+
+  <p>God knew that we were weak and that our waywardness almost always got the better of us. God gave us the law through Moses, hoping that we would stick to it and be His people and Him our God (John 1:17). However, the power of sin and death held us captive and enslaved us. Animal sacrifice seemed precarious at best to hold the bridge, let alone solve the dire problem of sin and death. Consequently, as Paul notes, &ldquo;God presented Christ as a sacrifice of atonement, through the shedding of his blood&mdash;to be received by faith&rdquo; (Romans 3:25a). Like a great light, Jesus came to transfer his holiness to us through his blood, so that we could approach God with boldness (Hebrews 4:16).</p>
+
+  <p>Yet there are still those who do not believe and refuse the free gift of God, which, by the way, was everything to Him. So says Jesus, &ldquo;This is the verdict: Light has come into the world, but people loved darkness instead of light because their deeds were evil&rdquo; (John 3:19&ndash;20). And because they deny the Light, God&rsquo;s wrath remains on them, along with their unholiness (John 3:36).</p>
+
+  <p>But to those of us who believe, Christ becomes our holiness and righteousness. The blood of Christ that touches us makes the live coal, which the angel brought to Isaiah, pale in comparison. To put it simply, Jesus&rsquo;s blood gives us a complete makeover from A to Z, reshifting and restructuring our whole spiritual DNA. This is why Paul describes it the way he does: &ldquo;Therefore, if anyone is in Christ, he is a new creation. The old has passed away; behold, the new has come&rdquo; (2 Corinthians 5:17). And this leads us to the third characteristic of God&rsquo;s holiness: perfection.</p>
+
+  <h3 class="sub">Holiness as Perfect</h3>
+
+  <p>Finally, God&rsquo;s holiness is perfect. Jesus teaches us to love our enemies and pray for those who persecute us, since God causes His sun to rise on the evil and the good and sends rain on the righteous and the unrighteous&mdash;&ldquo;Be perfect, therefore, as your heavenly Father is perfect&rdquo; (Matthew 5:43&ndash;48).</p>
+
+  <p>It was said earlier that holiness is essentially pure goodness that comes from God alone. What this means is that holiness is also associated with perfection. Thus, any time the Scripture mentions the word &ldquo;perfect,&rdquo; one should also think of the divine attribute &ldquo;holy&rdquo; or &ldquo;holiness.&rdquo; Jesus&rsquo;s words above also refer to God&rsquo;s holiness toward the end, which is reminiscent of God&rsquo;s own command from the Old Testament: &ldquo;I am the Lord your God; consecrate yourselves and be holy, because I am holy&rdquo; (Leviticus 11:44&ndash;45). Peter, too, exhorts the Church with the same words (1 Peter 1:15).</p>
+
+  <p>Holiness, which is pure, stands in direct opposition to sin, which is impure, and the two make parallel lines that can never intersect. By default, therefore, the unholy cannot enter the presence of the holy, and vice versa, as discussed in detail in the first subchapter on holiness. Thus writes the psalmist, &ldquo;Therefore the wicked will not stand in the judgment, nor sinners in the assembly of the righteous. For the Lord watches over the way of the righteous, but the way of the wicked leads to destruction&rdquo; (Psalm 1:5&ndash;6).</p>
+
+  <p>Now, perfection as it pertains to holiness is one that has to do with the soul. This is because even the slightest change in someone&rsquo;s soul can have lasting consequences, unlike changes in appearance or financial status, which are only temporary. The soul is what governs the person when it comes to values, morality, ethics, and such that are invisible yet make us who we are. Put differently, the soul is what determines our character. Therefore, when God tells us to be holy, He is essentially telling us to renew ourselves inside out so that our character no longer conforms to the world but to God. Christians are singularly called to imitate God, imitate Christ, and walk with the Holy Spirit, rain or shine. Hence Jesus&rsquo;s prayer for unity between himself, the Father, and all who would believe, so that the world may know they are loved (John 17:20&ndash;23).</p>
+
+  <p>As the prayer indicates, Jesus is emphatic about unity not just because he loves us and wants to be with us, but more than that, because he understands how brittle we are when we are left by ourselves. Achieving perfection seems impossible on our own, but with Christ, we can do all things through him who strengthens us (Philippians 4:13). In fact, the Gospel tells us that Christ&rsquo;s holiness is our holiness, and his righteousness is our righteousness. Paul writes, therefore, &ldquo;God made him who had no sin to be sin for us, so that in him we might become the righteousness of God&rdquo; (2 Corinthians 5:21). If we just let God do the work, He is faithful and will make His abode in us through Christ and with the Holy Spirit. He will help us renew our minds so that we will be able to test and approve what God&rsquo;s good, pleasing, and perfect will is (Romans 12:2b). Being holy and perfect means training our human will to align with God&rsquo;s divine will. It is just as Paul says to the Ephesian church: we were once darkness, but now we are light in the Lord, and we are to live as children of light, finding out what pleases the Lord (Ephesians 5:8&ndash;10).</p>
+
+  <p>Making perfection our goal does not automatically make us perfect, but it can give us a reason to be better every day&mdash;a reason to set aside time with God every day. Instead of reading self-help books and trying to make better versions of ourselves so we can have a better future, we should allocate our resources to read the Bible and make better versions of ourselves in Christ so we can have a future with God. To some, including myself, the word &ldquo;perfection&rdquo; comes with a weight. But the race we are running, the one that the Apostle Paul and a host of our fathers and mothers of faith ran and completed, cannot be run without a drop of sweat. We must not retreat or give up for the fear of falling, because Jesus Christ is always there for us to catch us when we fall. And when we get tired, we can just run up to Jesus, who gently says to us, &ldquo;Come to me, all you who are weary and burdened, and I will give you rest&rdquo; (Matthew 11:28).</p>
+
+  <p class="refrain">God is good, all the time.</p>
+</section>
+
+<div class="divider">
+  <div class="line"></div>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2c1.8 3 2.8 5.4 2.8 7.4 0 1.9-1.2 3.2-2.8 3.2s-2.8-1.3-2.8-3.2C9.2 7.4 10.2 5 12 2z"/><path d="M12 20v-7"/></svg>
+  <div class="line"></div>
+</div>
+
+<section class="chapter" id="ch4">
+  <div class="chapter-head">
+    <div class="eyebrow">Chapter Four</div>
+    <h2>Second Attribute: Justice</h2>
+  </div>
+
+  <p class="lede-para">Herman Bavinck once observed that goodness which nullifies justice is no longer true and real goodness.<sup>4</sup> God is holy, and this fundamental attribute acts as an umbrella under which all good things find existence. As discussed earlier, nothing good can come apart from God, who is the only source and spring of all that is good. It follows, therefore, that justice also falls under this umbrella as something good. It is what keeps the good and the bad in check. In this sense, Bavinck&rsquo;s statement is quite correct&mdash;goodness without justice would be an oxymoron.</p>
+
+  <p>Justice, however, cannot be treated as a mere subcategory of holiness. It is a real attribute of God, as a great number of biblical passages testify. If holiness is the standard of right and wrong, good and evil, justice is what helps it stand. Its absence is unthinkable in any given society, including the spiritual, and where it is dysfunctional, it means its collapse is near, as is chaos.</p>
+
+  <p>In Scripture, God is portrayed as the ultimate Judge. He, and only He, has the final say in what is right and wrong, for justice is inseparable from holiness. This is why the psalmist says, &ldquo;It is God who judges: He brings one down, he exalts another&rdquo; (Psalm 75:7). As Christians, we have this hope that never dies because of Jesus, and also very much because God is our Judge; He is for us and not against us through the blood of Christ, and He will vindicate us on the last day. Since God has the final say in all matters related to holiness, He is more than capable of saving us from our sins and judging us with compassion (Isaiah 33:22).</p>
+
+  <p>Like holiness, justice is an integral part of who God is and His character. Just as God called Israel in His holiness and set it apart as His, justice as an attribute moves God to take actions in various situations and circumstances. It follows, then, that we exert ourselves to study it as much as we can to know God better.</p>
+
+  <p>Justice as a divine attribute has the following characteristics, each with its own unique color: reciprocity, nonreciprocity, and sanctification.</p>
+
+  <h3 class="sub">Reciprocal Justice</h3>
+
+  <p>The first level is the reciprocal character of justice. As the most basic level of the three, it promotes a rather blunt system of justice. Its catch phrase is &ldquo;an eye for an eye,&rdquo; and as such, it is one that can be found easily in the Old Testament, where the Israelites were still quite infant-like in their spiritual maturity. Moses thus gives commands prescribing fracture for fracture, eye for eye, tooth for tooth (Leviticus 24:19&ndash;20).</p>
+
+  <p>Because of its simplicity, this form of justice does not require much discussion for a verdict. An action is followed by a corresponding consequence, fair and square. The earliest example goes all the way back to the Fall. God commands Adam not to eat from the tree of the knowledge of good and evil, on pain of death (Genesis 2:16&ndash;17). As we know, Adam, along with his wife Eve, disobeys the command and forces the hands of God to act against them in accordance with His earlier warning, bringing painful labor to Eve and painful toil to Adam (Genesis 3:16&ndash;19).</p>
+
+  <p>Reciprocal justice, therefore, is carried out based on pre-established rules, as is the case above, or directly by a higher power, or both. There is always a matching consequence to an action, a tit for tat.</p>
+
+  <p>The story of Cain and Abel is another example. Although no pre-established rules apply in this case, Abel&rsquo;s offering is deemed more righteous than his brother&rsquo;s by God, the higher power. Justice is still very much alive even without established rules because God Himself becomes their justice. Some might raise a red flag here and say the system is too lopsided for it to be fair or just. That may be. However, can we really say anything about justice to God by whom everything came to be and to whom it belongs? Did not even King Nebuchadnezzar of Babylon, one of the most powerful rulers ever recorded in history, humble himself before God, confessing that all His ways are just (Daniel 4:37)?</p>
+
+  <p>Still, some might question its simplicity, but it is this simplicity that makes reciprocal justice so powerful. It invokes a sense of awe and reverence for the one in true power who is in control. Many heroes and heroines throughout history have vied and bled for this power, to be the supreme ruler of everything and everyone, only to discover their finitude and the vanity of it all. It is not surprising, because no human was ever designed to fill these shoes except God.</p>
+
+  <p>Unlike an earthly autocrat, God is able to introduce and enforce rules that are for us, not against us; we can trust that His rules are innately good and righteous, designed for our prosperity, not destruction. While this might come as a surprise to some, we, as mere humans, need rules to survive. No matter how well we perceive ourselves to be, we make mistakes almost every day, even when we mean well. The thing is, we creatures are ignorant about how much our daily decisions weigh on the scale of righteousness and how our decisions today will play out tomorrow. Without proper rules, it is only a matter of time before we fall apart and scatter like scared sheep.</p>
+
+  <p>The situation is even worse for non-believers, as all of us are constantly subjected to sin and its power while here on earth. It is a fierce race, no less, but by the wisdom of God, it is also what humbles us before Him. God, who sympathizes with us, gave us the Law not to give us more burden but because He had our well-being at heart, so that it might go well with us and our children forever (Deuteronomy 5:29).</p>
+
+  <p>Of course, not everything makes perfect sense. But even so, we ought to respond as Daniel&rsquo;s three friends have, who told King Nebuchadnezzar that even if their God did not deliver them from the blazing furnace, they would still refuse to worship his gods (Daniel 3:16&ndash;18). Daniel&rsquo;s friends risked even death to keep God&rsquo;s command not to serve other gods or idols. They firmly believed that God would protect them from the fire, but even if He were not, they would still stick to obeying the command. Why God would leave them there to die, they would not know. But that was hardly their greatest concern. What mattered to them most&mdash;and what they believed&mdash;was that God, who is good, has given the commandments for a reason and that living by them never fails.</p>
+
+  <p>As the story goes, God receives glory by saving them from the fire, and not a hair on them is burned. Here, we see again that reciprocal justice is as powerful as it is simple. Be that as it may, God wants us to grow and eat solid food, because obedience means nothing unless we know the heart of God.</p>
+
+  <h3 class="sub">Nonreciprocal Justice</h3>
+
+  <p>The second level of justice is nonreciprocal. Unlike the last one, nonreciprocal justice is not always fair-and-square, and because of that, its outcome is less predictable. While all three levels of justice ultimately derive their authority from God, hence His second attribute, the difference between reciprocal and nonreciprocal justice lies in the latter&rsquo;s greater fluidity based on the divine purpose and will.</p>
+
+  <p>For instance, Paul writes about how God favored Jacob over Esau even before birth, before either had done anything good or bad, so that God&rsquo;s purpose in election might stand (Romans 9:10&ndash;14). Most people would say favoritism such as this is not fair. But according to the second level of divine justice, this is quite justified, for it is God the Judge who has made the call. God, who is holy, has His purpose and will always set upon that which is good. As His creatures with limited purview, we sometimes neglect this part and see God as cruel and vindictive, if not less righteous and just than we are. Like Job&rsquo;s wife, we get tempted to hurl curses at God and turn our backs on him when calamity hits.</p>
+
+  <p>Jesus&rsquo;s parable of the workers in the vineyard is another example. Those hired early in the day and those hired at the very end all receive the same wage, and when the early workers protest, the landowner asks whether he is not free to do as he wishes with his own money, or whether they are envious because he is generous (Matthew 20:13&ndash;15).</p>
+
+  <p>Understandably, the workers who worked longer must have felt they were being taken advantage of, but the point is not so much about what is fair as it is about God&rsquo;s sovereignty over all matters of justice. In other words, God&rsquo;s holy purpose and will always precede any established system of justice.</p>
+
+  <p>The adulteress, another example, was supposed to be stoned to death to &ldquo;purge evil&rdquo; among Israel, the holy nation, but instead, Jesus forgives and the woman walks away justified (Deuteronomy 22:22; John 8:1&ndash;11).</p>
+
+  <p>Some might ask, &ldquo;Is nonreciprocal justice always this unpredictable?&rdquo; If God were so predictable, we would not need to exert ourselves to know God; the first level of justice, as straightforward as it is, would fix all our problems. However, God is the living God, and He is very relational. He cannot be confined to some kind of formula, just as none of us can be. This is why we must strive to get to know Him better so that we can discern the good will of God and work toward something that pleases Him.</p>
+
+  <p>As mentioned earlier, God is the ultimate Judge, who has mercy on whom He has mercy and compassion on whom He has compassion (Romans 9:15). With that established, we can take comfort in knowing that nonreciprocal justice is called such because it is focused on grace as opposed to works. This is the heart of God: &ldquo;For I desire mercy, not sacrifice, and acknowledgment of God rather than burnt offerings&rdquo; (Hosea 6:6). Tit-for-tat makes sense when we are young and still immature. The math works. But when mercy enters the picture, suddenly it does not add up, and yet, the imperfection makes it that much more perfect.</p>
+
+  <p>We should always keep in mind that God searches for a contrite heart that serves as fertile ground for mutual communication. Repentance and forgiveness cannot come in any other way. When this occurs, the heavy weight of sin will be lifted, and the forgiven will praise God for His justification. Nonreciprocal justice truly comes into its own through forgiveness.</p>
+
+  <p>God, who is also love, keeps on surprising us with His love. He keeps on pulling the strings of justice in our favor. This unbalanced justice is a sign of God&rsquo;s resilient love for us, and we learn that this has been God&rsquo;s plan all along: to prosper us and not to harm us, to give us hope and a future (Jeremiah 29:11). The Gospel delivers the same message. Through Jesus, God demonstrated His love for us by dying for us while we were still sinners (Romans 5:8). His great compassion for His creatures is seen daily by the sunrise on both the evil and the good and the rain on both the righteous and the unrighteous (Matthew 5:45).</p>
+
+  <p>That said, if understood incorrectly or seen with a cynical attitude, nonreciprocal justice can be a source of serious temptation. Why does the good God allow evil, for example? Why does He allow bad things to happen to good people, or vice versa? However, these questions only stem from a lack of faith or trust in the good God, for who can fathom the Spirit of the LORD, or instruct Him as His counselor (Isaiah 40:13&ndash;14)?</p>
+
+  <p>Not only is a mere human being incapable of answering such questions, but it is not our place as creatures to answer them either. Everything we need to know about God has already been revealed through the person of Jesus Christ, the sign of Jonah, which is God&rsquo;s death on the cross (Matthew 16:4a).</p>
+
+  <p>Reciprocal or nonreciprocal, balanced or imbalanced, we Christians can always rejoice and be thankful because our God, the righteous Judge, is always for us and not against us, and He comes to judge the earth in righteousness and the peoples in His faithfulness (Psalm 96:11&ndash;13). The term judgment may sound daunting, but for those who know God, it is a day of salvation and vindication.</p>
+
+  <p>For the same reason, we can make confessions like Job&rsquo;s even in the midst of turmoil: the Lord gave and the Lord has taken away, and blessed be the name of the Lord (Job 1:21). Knowing God&rsquo;s good purpose and will always prevail enables and empowers us.</p>
+
+  <p>But the pinnacle still remains. Maturing in and with Christ means we do not stop at nonreciprocal justice. God&rsquo;s justice comes to full blossom at its final level: sanctifying justice.</p>
+
+  <h3 class="sub">Sanctifying Justice</h3>
+
+  <p>The final level of justice is called sanctifying, because that is exactly what it does: make holy. At the risk of simplification, if reciprocal is characterized by its objectivity, and nonreciprocal by subjectivity, sanctifying is characterized by its reconciliatory and covenantal relationship with God. Having come through the Messiah, this last form of justice finds its basis in the new commandment of Jesus: &ldquo;A new command I give you: Love one another. As I have loved you, so you must love one another&rdquo; (John 13:34).</p>
+
+  <p>Because God has entrusted everything to the Son, sanctifying justice is not just another covenant among others (Matthew 11:27). It is the covenant that supersedes all rules and regulations, having the heart of God and the character of God at its center. John 3:16, then, is a verse that serves as an introduction to this new covenantal justice.</p>
+
+  <p>Unlike reciprocal justice, which requires various kinds of sacrifice and rituals to maintain peace with God, or nonreciprocal justice, which heavily depends on God&rsquo;s mercy to bring about this peace, sanctifying justice establishes eternal peace with God through the blood of Jesus. This is the very love of God made known through Jesus and, at the same time, the foundation of the new commandment&mdash;or covenant&mdash;as mentioned above. As the author of Hebrews notes, the new covenant, established on better promises, was foretold through the Prophet Jeremiah: God would write His law on our hearts and remember our sins no more (Jeremiah 31:31&ndash;34; Hebrews 8:6).</p>
+
+  <p>If forgiveness was the end goal for the first two levels of justice, it is only the beginning for the third level of justice.</p>
+
+  <p>It was said earlier that one is saved by faith, not by works (Ephesians 2:8&ndash;9). With nonreciprocal justice, this is certainly true; salvation always begins with faith in Christ. That said, it would be a grave error to take this forgiveness for granted and keep on sinning. Although forgiveness in Christ indeed comes to us as a promise, it is by no means a free pass to sin. Treating it as such would be an insult to the cross and the sacrifice that God has made. For this reason, it is important to see it through all that sanctifying justice entails. As said before, it begins with salvation, also known as the &ldquo;born-again&rdquo; experience, according to Jesus, and ends with tangible sanctification (John 3:7).</p>
+
+  <p>As God has revealed through Jeremiah, His goal is not just to forgive. On the contrary, it is only the beginning of His master plan where the new sons and daughters, who had entered the new covenant through Jesus, would truly come to &ldquo;know&rdquo; God. In other words, He wants to refine us as gold, as He did with Job (Job 23:10), and as He promises through the Prophet Zechariah, who will refine His people like silver and test them like gold (Zechariah 13:9).</p>
+
+  <p>In the same vein, Peter also exhorts the early Christians to rid themselves of malice, deceit, hypocrisy, envy, and slander, and to crave pure spiritual milk so that they may grow up in their salvation (1 Peter 2:1&ndash;3). Similarly, Paul prays that the church in Philippi&rsquo;s love may abound more and more in knowledge and depth of insight, so that they may discern what is best and be pure and blameless for the day of Christ (Philippians 1:9&ndash;11).</p>
+
+  <p>Sanctifying justice, therefore, invites everyone to the table of God. This is done by faith alone, and it is a gift of God. There is nothing in this about which we can boast (Ephesians 2:8&ndash;9). However, when we are born again by God&rsquo;s grace through His sanctifying justice, made possible through Jesus Christ, we must put this grace and forgiveness to work. Otherwise, it is as good as nothing. As the Apostle James put it, faith without works is as good as &ldquo;dead&rdquo; (James 2:17), and religion that is pure and faultless before God looks after orphans and widows in their distress and keeps itself from being polluted by the world (James 1:22, 26&ndash;27).</p>
+
+  <p>Consequently, the third level of justice has its justification begin with faith and end with works. In Romans 6, Paul adamantly warns against sinning under grace, not after having tasted the goodness of God and the forgiveness through Christ. We may still slip up from time to time, of course, but our will to resist evil must stay robust while the Holy Spirit works tirelessly in us to complete the work that God has started. In this, we must let humility govern every aspect of our physical and spiritual lives so that God&rsquo;s heart becomes our hearts and God&rsquo;s mind our minds. Concerning this covenantal justice, Paul describes what happens to a Christian who has been sanctified by the blood of Christ: set free from sin and made a slave of God, reaping the benefit that leads to holiness and eternal life, for the wages of sin is death but the gift of God is eternal life in Christ Jesus (Romans 6:22&ndash;23).<sup>5</sup></p>
+
+  <p>Sanctifying justice, then, requires both grace and works to be made whole, as without either one, it becomes a mere compound word that has no meaning. We ought to heed Jesus&rsquo;s warning in the parable of the sheep and the goats, where those who neglected the hungry, the stranger, and the imprisoned are told, &ldquo;Whatever you did not do for one of the least of these, you did not do for me&rdquo; (Matthew 25:41&ndash;45). Again he warns that not everyone who says, &ldquo;Lord, Lord,&rdquo; will enter the kingdom of heaven, but only the one who does the will of the Father, and that many who prophesied and did mighty works in his name will be told, &ldquo;I never knew you&rdquo; (Matthew 7:21&ndash;23).</p>
+
+  <p>Jesus&rsquo;s death on the cross has brought the kingdom of God that much closer to us. Sanctifying justice has made approaching God that much more accessible for us. The reciprocal and nonreciprocal justices, while still useful, pale in comparison to the justice brought forth by the Son of God and the Wisdom of God. As Paul notes, it begins with a simple yet sincere declaration: if you declare with your mouth that Jesus is Lord and believe in your heart that God raised him from the dead, you will be saved (Romans 10:9&ndash;10). In that moment, we are grafted into God&rsquo;s family, for apart from the vine, the branches can do nothing (John 15:5).</p>
+
+  <p>Having received the grace of sanctifying justice but doing nothing about it is like a man who just replaced his car&rsquo;s old engine with a superior one but never tests it. No matter how slick the car is, it is just a massive chunk of metal if there is no one to drive it. If we truly confess Jesus to be our Lord and Savior, we need to respond to the cross with action, not inaction, lest we become guilty of taking God&rsquo;s sacrifice for granted. This is why Paul says he cannot boast in preaching the gospel, since he is compelled to do so&mdash;woe to him if he does not (1 Corinthians 9:16)&mdash;and why we are also called to continue working out our salvation with fear and trembling (Philippians 2:12b).</p>
+
+  <p>Our God, the Judge, is holy and righteous, judging the world on the basis of all three levels of justice. As the children of God, Christians need to be diligent students of God&rsquo;s laws, which are perfected by Christ (the first level of justice), readily forgive others as we were freely forgiven through Christ (the second level of justice), and walk humbly with the Holy Spirit so that we may bear much fruit in Christ. While all three levels of justice remain important and beneficial, Christ&rsquo;s sanctifying justice is the greatest, because it is he who perfects the whole Law and the Prophets by ushering in the new covenant (Matthew 5:17; Hebrews 8:13).</p>
+
+  <p class="refrain">God is just, as much as He is holy. This should be a comfort for all believers.</p>
+
+  <ol class="footnotes">
+    <li>Herman Bavinck, <em>Reformed Dogmatics: Holy Spirit, Church, and New Creation</em>, vol. 4 (Grand Rapids: Baker Academic, 2008).</li>
+    <li>See Hebrews 10:26&ndash;31.</li>
+  </ol>
+</section>
+
+<div class="divider">
+  <div class="line"></div>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2c1.8 3 2.8 5.4 2.8 7.4 0 1.9-1.2 3.2-2.8 3.2s-2.8-1.3-2.8-3.2C9.2 7.4 10.2 5 12 2z"/><path d="M12 20v-7"/></svg>
+  <div class="line"></div>
+</div>
+
+<section class="chapter" id="ch5">
+  <div class="chapter-head">
+    <div class="eyebrow">Chapter Five</div>
+    <h2>Third Attribute: Compassion</h2>
+  </div>
+
+  <p class="lede-para">In 1 John 4, the apostle exhorts the Church to love one another, for love comes from God, and everyone who loves has been born of God and knows God, while whoever does not love does not know God, because God is love (vv. 7&ndash;8). The reason we ought to love one another is simple: we love because God has first loved us, sending His one and only Son into the world that we might live through him, as an atoning sacrifice for our sins (vv. 9&ndash;10).</p>
+
+  <p>Both in and out of the Church, Christianity is widely known as a religion of love. While this is certainly a good thing and quite biblical too, it appears that there is a need to define the term &ldquo;love&rdquo; as taught by Christ since it has a wide range of meanings. As the verses above suggest, I am convinced that this love is one of compassion.</p>
+
+  <p>When it is said, &ldquo;God is love,&rdquo; therefore, it points to God&rsquo;s compassion for us, the sinners, that moved God to send His only Son to die for us. This fundamental attribute that moved Him, then, is God&rsquo;s third attribute and the subject of the current chapter.</p>
+
+  <p>God&rsquo;s compassion may be unpacked using the following terminology: heart and Immanuel. Once again, as with God&rsquo;s holiness and justice, the purpose of knowing the divine attributes, and thereby God, is to emulate them in our own lives so that we can be ever so close to Him, being properly shaped in His image through the Trinity. As the Apostle John also indicates, failing to emulate these attributes is the same as failing to know God, for whoever claims to love God yet hates a brother or sister is a liar (1 John 4:19&ndash;20).</p>
+
+  <p>And without knowing Him, how can anyone expect to enter His kingdom?</p>
+
+  <h3 class="sub">Heart Compassion</h3>
+
+  <p>In the increasingly individualized society we all live in, the word &ldquo;compassion&rdquo; is becoming less and less familiar. The need to care about someone other than myself has become, for many of us, a burden. Even when we do care about someone, the question remains whether it is in that person&rsquo;s best interests or mine. With the help of advanced technology, selfishness has become the keyword of the century, and the silent need to feel superior to others the driving force behind many individuals who bury themselves in self-help books.</p>
+
+  <p>In one of his parables, Jesus asks at the end, &ldquo;However, when the Son of Man comes, will he find faith on the earth?&rdquo; (Luke 18:8b). I think a similar question can be asked of ourselves: &ldquo;When Jesus comes, will he find any compassion left?&rdquo;</p>
+
+  <p>In Matthew 24, Jesus warns about the end of times and the signs that follow. One of the signs, he says, will be a lack of love, for because of the increase of wickedness, the love of most will grow cold (v. 12). While there are many forms of love, we know this love to be compassionate love, for Jesus commands us to love our neighbor as ourselves and to do to others as we would have them do to us (Matthew 22:39b; Luke 6:31). The absence of such love is essentially a world without God and, therefore, without anything that is good.</p>
+
+  <p>The Shema, the greatest commandment, also calls for compassion. When we are called to love our God with all our heart, with all our soul, and with all our mind, we are called to do so by connecting with God&rsquo;s heart so that we can discern His will for our lives and for the world around us (Matthew 22:37).</p>
+
+  <p>An empathetic person, then, is someone who does not stop at just knowing the other on a cognitive level, but someone who goes much further. By tapping into the other&rsquo;s very heart, the compassionate person makes a meaningful connection that brings the knowledge of the other to a whole new level, quite beyond what the mind allows. Here, the hearts of two become one, as it were, and they understand each other like they understand themselves. They are like two individual branches in one vine, as Jesus put it, and the union is both simple, lest it become an obsession, and complex, lest it become superficial (John 15:5). In the Old Testament, the friendship between David and Jonathan is a good example of this special bond, as Jonathan became one in spirit with David and loved him as himself (1 Samuel 18:1).</p>
+
+  <p>Heart compassion is therefore love that reaches and connects hearts. It understands the joys and pains of the other and acts accordingly. Paul&rsquo;s famous description of love&mdash;patient, kind, not envious or boastful, keeping no record of wrongs, always protecting, trusting, hoping, and persevering&mdash;captures exactly this (1 Corinthians 13:4&ndash;7).</p>
+
+  <p>Now, some teach only for the sake of teaching without practicing what they teach. Not so with God. Throughout the Old Testament, we see God trying tirelessly to gather His people under His wings. He sends numerous prophets, judges, kings, and priests so that He can be their God, and they His people. Israel, however, is stubborn. Ezekiel 23 thus presents the two kingdoms of Israel and Judah as unfaithful sisters who, once handpicked by God to be holy, depart from Him to seek other nations instead of relying on their Rock in times of crisis.</p>
+
+  <p>Time and time again, God tries to win them back, but every time, they go searching for another man. Their continued disobedience to God and disregard for holiness lead to more and greater sins stacking against them, and eventually, the holy God delivers judgment. Both kingdoms fall and are wiped out of the map. Though justice has been served, the Judge&rsquo;s heart is still very much broken. Despite their waywardness, God still longs for them and for their return home, calling them His sheep even in judgment (Ezekiel 34:31), and promising through Jeremiah that He will restore their fortunes and have compassion on them (Jeremiah 33:25b&ndash;26).</p>
+
+  <p>In the end, God sends His Son&mdash;His only Son (John 3:16). If history tells us anything, it is that God&rsquo;s heart has always been for us, not against us (Romans 8:31). His plan has always been to prosper us, not destroy us (Jeremiah 29:11). This love God lavishes on us&mdash;that overcame even death&mdash;is too marvelous for words. Paul thus prays that we, rooted and established in love, may grasp how wide and long and high and deep the love of Christ is, and know this love that surpasses knowledge (Ephesians 3:17b&ndash;19).</p>
+
+  <p>When God commissioned Moses, He said He had seen the misery of His people in Egypt and heard their cries and was concerned about their suffering (Exodus 3:7). God was concerned then, and He is concerned now. God, who is compassionate, does not overlook the suffering of His people but looks to save them, even if that means His own death.</p>
+
+  <p>Knowing God&rsquo;s compassion is important because it is synonymous with the cross. If it were not for His compassionate love, we would still be wallowing and perishing in our own sins. It is because of God&rsquo;s compassion that the Word became flesh and made his dwelling among us (John 1:14b). Furthermore, by identifying with us in every way, God makes it possible for us to be shaped in His true image&mdash;not the image Adam took on that fell, but the image Christ took on that lasts&mdash;so that we can be united with Him at last. Consequently, Jesus prays right before his death that all who believe may be one with him and the Father, so that the world may believe (John 17:20&ndash;21).</p>
+
+  <p>The Father&rsquo;s love, as revealed through the Son, is made complete through the Holy Spirit, who helps us to love just as we are loved. In sanctifying us through the blood of Jesus Christ, the Holy Spirit helps us discern and obey the will of God, who loves mercy (Hosea 6:6). As mentioned above, Jesus commands us to love one another as he has loved us, and by this all people will know we are his disciples (John 13:34&ndash;35). Notice that it is not a suggestion but a command.</p>
+
+  <p>Even though the Holy Spirit always comes to our aid, refusing to treat others with love and mercy&mdash;that compassion we have all seen and tasted&mdash;will eventually turn it against our heads. As a warning, Jesus tells the parable of the unforgiving servant, who, having been forgiven a great debt, refuses to forgive a small one owed to him, and is handed over to be jailed until he should pay back all he owed. Finishing the parable, Jesus warns that the heavenly Father will do the same to every one of us if we do not forgive our brother from the heart (Matthew 18:32b&ndash;35).</p>
+
+  <p>In the Old Testament, when keeping the individual laws to the letter was by far the greatest concern to remain holy to God, the commandment was given, &ldquo;Be holy because I, the Lord your God, am holy&rdquo; (Leviticus 19:2b). In the New Testament, however, Jesus tears down the wall between God and us, forever sanctifying us through his own righteousness and blood. Consequently, Jesus gives a new commandment based on the new covenant: &ldquo;Be merciful, just as your Father is merciful&rdquo; (Luke 6:36). Holiness still matters, but it is no longer our righteousness that makes us holy, but Jesus&rsquo;s; when the Holy Spirit enters us, we are ever renewed, like the fountain that never runs dry, to be holy and acceptable to God. Jesus thus beckons us to come to him, all who are weary and burdened, and find rest for our souls, for his yoke is easy and his burden is light (Matthew 11:28&ndash;30).</p>
+
+  <p>Because of what Jesus did on the cross&mdash;the ultimate act of love&mdash;we no longer have to concern ourselves with individual laws to ensure holiness. Rather, having become sons and daughters of God through Christ, we now allocate our resources to grow and mature in spirit. More specifically, we focus on our hearts to go after God&rsquo;s own heart and live it out by extending the compassion we have received to others. Before Christ, this was difficult to achieve because holiness always got in the way of knowing God on a deeper level. With Christ, all of this changed. We no longer have to worry about mediators or scapegoats to take away our sins and purify us. Because of Christ, who is our holiness and righteousness, we can grow in knowledge of God like never before and worship Him with everything we have, full of the Spirit and in truth (John 4:23).</p>
+
+  <p>It was said that heart compassion is love that reaches and connects hearts. Indeed, Jesus, our mediator, does exactly that: reaching and connecting our hearts to God&rsquo;s very heart. Distressed, Job lamented at the fact that he had no mediator who would plead his case before God (Job 9:33). We, however, have Jesus Christ, who, being fully God and fully human, identifies with us and pleads to the Father on our behalf, a high priest who is holy, blameless, pure, and always lives to intercede for us (Hebrews 7:25&ndash;26).</p>
+
+  <p>And just as Christ meets our needs, we are to meet the needs of others with heart compassion. When we love, therefore, we ought to remember the Golden Rule, treating others just as we want to be treated (Luke 6:31). We do this not because we are commanded per se, but because it is truly what our hearts desire as we are renewed by the Spirit (Romans 12:2). We are to tap into their hearts and understand where they are coming from, always ready to forgive, just as we are forgiven (Luke 11:4). We ought to train ourselves to cry and laugh alongside them and help them tangibly, not just with words (James 2:14&ndash;17). We ought to be the salt and light of the world in this regard and good Samaritans in our deeds, letting our light shine before others so that they may see our good deeds and glorify our Father in heaven (Matthew 5:14&ndash;16).</p>
+
+  <p>Tapping into other people&rsquo;s hearts does not mean we need to know everything about them in order to love them. As fellow human beings, we already know enough&mdash;unlike God, whom we must get to know deeper every day. All we have to do, then, is follow what the Samaritan man did, who, upon seeing the injured man on the road, took pity on him and cared for him practically, at his own expense, without knowing him at all (Luke 10:33&ndash;35). We already know what we received&mdash;unconditional, compassionate love&mdash;and that is what we owe to others around us.</p>
+
+  <p>Knowing the compassion God has for us and applying it to our lives goes beyond obeying Jesus&rsquo;s command to love one another. By being compassionate, we also gain the assurance that we are on the right path to eternal life (Luke 10:25&ndash;28). And this is quite related to God&rsquo;s second attribute, justice, by which we are freely forgiven and sanctified. Paul thus writes, &ldquo;Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you&rdquo; (Ephesians 4:32). Therefore, we must guard our hearts with vigilance so as to not end up like the foolish debtor, who, after having been forgiven all his debt, acted without mercy for the little money he was owed. Also, we dare not turn our Lord&rsquo;s Prayer into a lie by refusing to forgive, thereby heaping up the wrath of God on our heads (Matthew 6:12).</p>
+
+  <p>As the body of Christ, the Church cannot emphasize enough this compassion that reaches and connects hearts. This mercy that allows us to suffer with others and identify with them is one of the most sacred missions as commanded by our Lord Jesus and is to lead to tangible results. Being aware of its significance, the Apostle Paul also exhorts believers, as God&rsquo;s chosen people, holy and dearly loved, to clothe themselves with compassion, kindness, humility, gentleness, and patience, and above all to put on love, which binds everything together in perfect unity (Colossians 3:12&ndash;14).</p>
+
+  <p>If, for whatever reason, love within us is dimming and growing cold, the above words should rekindle that fire and make it burn once more. That first love we received from God through the Son by the Spirit should move us to have compassion and connect with others heart-to-heart, just as we are connected to God&rsquo;s heart by the blood of Christ. Without it, everything we do in the name of Christianity would be meaningless, and our Holy Communion would be just another common dinner with everyday bread and wine. We must not forget we can call on God, &ldquo;Abba, Father,&rdquo; only because of what Jesus did on the cross because God had compassion on us.</p>
+
+  <p>Without being able to even lift his eyes, the tax collector in Jesus&rsquo;s parable says only, &ldquo;God, have mercy on me, a sinner&rdquo; (Luke 18:13b). God, who is compassionate and who loves mercy, then forgives, justifies, and sanctifies (Luke 18:14). As the children of God, we are expected to do nothing less.</p>
+
+  <h3 class="sub">Immanuel Compassion</h3>
+
+  <p>The word compassion literally means suffering with. And literally, this attribute of God is expressed through the person of Jesus Christ, who came down to earth to offer himself up as a sacrifice for our sins. God, who is also holy and just, required a means to justify that which was unholy, and the Son of God willingly became that means for us so we could be reconciled with Him. John writes, therefore, that whoever believes in the Son has eternal life, but whoever rejects the Son will not see life, for God&rsquo;s wrath remains on them (John 3:36). Similarly, Paul notes that since we have been justified through faith, we have peace with God through our Lord Jesus Christ (Romans 5:1&ndash;2a).</p>
+
+  <p>That God is coming to share in our suffering to make peace with us was not a news flash, for it was foretold long ago by the Prophet Isaiah: the virgin will conceive and give birth to a son, and will call him Immanuel (Isaiah 7:14).</p>
+
+  <p>Immanuel, therefore, is another expression of God&rsquo;s great compassion. The author of life gave up His own so that we could have life eternal through Him. This is the Gospel, and there is no other like it. Moved by compassion, God deliberately chose to share in our suffering brought on by sin. No one forced God to be a shepherd, but He became one for us to fight on our behalf, laying down his life for the sheep of his own accord (John 10:14&ndash;15, 18a). By conquering sin and death, God led us out of darkness into His wonderful light, so that we may share in His goodness forever, as a chosen people, a royal priesthood, a holy nation, once not a people but now the people of God (1 Peter 2:9&ndash;10).</p>
+
+  <p>From Genesis 1 to Revelation 22, the God of heaven and earth wanted this one thing: to be with us. Knowing there is nothing good apart from Him, He desperately wanted to share all that is good with us in and through Him. To this end, God revealed Himself to the patriarchs, gave the Law, sent the prophets, and ultimately, sent His Son. As the author of Hebrews writes, He did all this because &ldquo;without holiness no one [can] see the Lord&rdquo; (Hebrews 12:14b). But this was what God saw: none who understand, none who seek after God, none who do good, not even one (Psalm 14:1&ndash;2).</p>
+
+  <p>All God ever wanted was to gather His people under His wings, as Jesus laments over Jerusalem, longing to gather her children as a hen gathers her chicks, though they were not willing (Matthew 23:37).</p>
+
+  <p>The ridge of sin that separated us from God seemed too high to overcome, and the gorge of death too deep to cross. But in His infinite wisdom that manifests through Christ, God made it possible for us to enter His presence via Immanuel compassion. This resilient love that pursues us even to the point of death has finally bridged us back to God and rendered the impossible possible. As Paul writes in his concluding remarks in Romans, God bound everyone over to disobedience so that He might have mercy on them all&mdash;&ldquo;Oh, the depth of the riches of the wisdom and knowledge of God!&rdquo; (Romans 11:32&ndash;33).</p>
+
+  <p>Because of Immanuel, we can call ourselves &ldquo;Christians,&rdquo; and as His children, we are invited to the table of the holy God on a regular basis. This is the fulfillment of Jesus&rsquo;s prayer for his disciples and all the disciples to follow&mdash;that they may be one, just as he is in the Father, so that the world may know they have been loved as the Father has loved him (John 17:20&ndash;23).</p>
+
+  <p>Being united with God is not just a feel-good phrase; it is a spiritual reality we enter through God the Father, the Son, and the Holy Spirit. It is what allows us to worship God &ldquo;in spirit and in truth&rdquo; and what gives us the power to forgive (John 4:24; 20:21&ndash;23). It is the power of God that renews and rebirths us in His Christ-like image, as those He foreknew He also predestined, called, justified, and glorified (Romans 8:29&ndash;30).</p>
+
+  <p>Compassion is the overlapping of the hearts, and as such, it is both a key attribute of God and an important condition for Christians to understand the heart of God. It is both the basis of the Gospel and its outcome. The one whose heart is aligned with God, therefore, offers up one&rsquo;s whole life as a living sacrifice in accordance with God&rsquo;s will, for anyone who loves Jesus will obey his teaching, and the Father will love them and make His home with them (John 14:23).</p>
+
+  <p>In summary, the compassionate God has taught us how to love one another through the person of Jesus. Through him, not only do we learn the greatest commandments in the most tangible way, but also how to carry them out in a manner that pleases God: by understanding, or trying our best thereof, God&rsquo;s heart and the hearts of others with compassion, or suffering with, and being there for them just as God has always been there for us in Christ (Romans 8:38&ndash;39; Ephesians 4:32).</p>
+</section>
+
+<div class="divider">
+  <div class="line"></div>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2c1.8 3 2.8 5.4 2.8 7.4 0 1.9-1.2 3.2-2.8 3.2s-2.8-1.3-2.8-3.2C9.2 7.4 10.2 5 12 2z"/><path d="M12 20v-7"/></svg>
+  <div class="line"></div>
+</div>
+
+<section class="chapter" id="ch6">
+  <div class="chapter-head">
+    <div class="eyebrow">Chapter Six</div>
+    <h2>Fourth Attribute: Wisdom</h2>
+  </div>
+
+  <p class="lede-para">Wisdom, the fourth and last attribute of God, may be the most pertinent divine attribute in terms of living out Christianity in our day-to-day lives. Wisdom is like a compass that helps guide a person toward a holy life, and as such, a Christian without wisdom is like a helplessly lost ship. Furthermore, it is almost impossible to understand the other three attributes of God without the fourth, let alone live them out. For the above reasons, a Christian is not truly a Christian without wisdom, for there is no Christ in them who is the wisdom of God.</p>
+
+  <p>As the compass of the soul, wisdom has many names: the Word, humility, fear of God, peace, life, and suffering. Each of these names shows an important aspect of wisdom. But there is one name that singularly encapsulates all of these names, and that is Jesus Christ. Paul thus writes that God exalted him and gave him the name above every name, that at the name of Jesus every knee should bow (Philippians 2:9&ndash;11). Just as a ship without a compass is quite lost in the sea, one without Christ is lost in life, lacking in wisdom. Any effort to emulate God&rsquo;s holiness, justice, compassion, and wisdom is a blind dart if not begun with wisdom; the dart may still hit the board, but the act is reckless all the same.</p>
+
+  <p>For Christians to truly shine in this world, which, by the way, seems to grow darker by the hour, wisdom is absolutely critical. My goal, like Paul&rsquo;s, is that we may know the mystery of God, namely Christ, in whom are hidden all the treasures of wisdom and knowledge (Ephesians 1:17; Colossians 2:2&ndash;3).</p>
+
+  <p>The Scripture is clear on Jesus being the very definition of wisdom and the Word incarnate, who, as the Son of God, has become the single most assuring sign and revelation of God and His character (1 Corinthians 1:24; John 1:14). It is through Jesus that we see God, as Jesus says, &ldquo;Anyone who has seen me has seen the Father&rdquo; (John 14:9b). Why ask for a sign when the greatest sign of all time is right before you?</p>
+
+  <p>The six names of wisdom, therefore, make sense only in and through Jesus; they are either who Jesus is or what he taught and embodied.</p>
+
+  <h3 class="sub">Wisdom: The Word</h3>
+
+  <blockquote class="scripture">In the beginning was the Word, and the Word was with God, and the Word was God. He was with God in the beginning. Through him all things were made; without him nothing was made that has been made. In him was life, and that life was the light of all mankind. The light shines in the darkness, and the darkness has not overcome it.<cite>John 1:1&ndash;5</cite></blockquote>
+
+  <p>In Genesis 1, when God created all things heaven and earth, He created with the Word. God spoke, and everything came to be. As the above passage indicates, all things were made through the Word, and we learn that this Word also became flesh (1:14). From this, we know that it is by the Word that God&rsquo;s wisdom manifests itself, through the person of Jesus Christ, both written and spoken: first written, because we have been given the Scripture concerning Jesus who fulfills the Law, and second spoken, because the world was created through the spoken Word of God (Matthew 5:17).</p>
+
+  <p>Early in the book, it was said that the Scripture is a collective testimony of God, the Son, and the Holy Spirit. God gave us the Bible so that we could come to know Him and worship Him in spirit and truth. In particular, it is a testimony about Jesus, the Son of God, who has become our salvation. Through him, and only through him, we can approach and be reunited with God the Father, from whom all good things flow. Indeed, the entire Scripture is about Jesus, the Word incarnate. Thus, after his resurrection, Jesus appears to his disciples on the road to Emmaus and opens the Scripture for them concerning himself, beginning with Moses and all the prophets, and their hearts burn within them (Luke 24:27, 32).</p>
+
+  <p>That the Word is present throughout the whole of Scripture becomes more apparent in the New Testament. Paul, who wrote nearly half the New Testament, resolved to know nothing except Jesus Christ and him crucified (1 Corinthians 2:2), and considered everything else a loss compared to the surpassing worth of knowing Christ (Philippians 3:8). The Word became flesh, and this event is the sole reason we have the New Testament with us. From the perspective of God&rsquo;s salvific narrative, which inevitably involves Jesus, the reason for the Old Testament is not so different either.</p>
+
+  <p>The significance of the Word is not that Scripture is somehow deified by it due to its overwhelming presence in both testaments; this cannot be, lest we fall into biblicism, as discussed in Chapter One. Rather, its significance is found in the terminology itself, or diction. Human beings are different from other animals in that we can communicate with each other using intelligible words. We can write and preserve complex historical records for perpetuity, provided they do not get lost. This unique ability, which cannot be found in billions of other creatures cohabiting on the earth, is, it seems to me, a piece of God&rsquo;s image imparted to us. The Word is immeasurably important, but the words we use every day, therefore, also matter greatly.</p>
+
+  <p>In fact, the Wisdom Books are filled with all kinds of instructions on how to tame the tongue. According to these books, a disciplined tongue is a telling sign of wisdom. The Proverbs and Psalms repeatedly connect a prudent, righteous tongue with wisdom itself (Proverbs 10:19, 31; Psalm 37:30).</p>
+
+  <p>As God&rsquo;s children through Christ, the Word, we ought to watch every word that comes out of our mouths. It is just as James says: the tongue, though small, is a restless evil that can bless our Lord and curse those made in God&rsquo;s likeness in the same breath, which ought not to be, for a spring cannot produce both fresh and salt water (James 3:7&ndash;12). By the Word, God created the world and revealed Himself to us. Similarly, the words we use reveal who we are to others and to God. Just as wisdom is tested by the words we use, foolishness, too, is tested by our words. Jesus thus teaches, &ldquo;For by your words you will be acquitted, and by your words you will be condemned&rdquo; (Matthew 12:37). Some people say we are what we eat. The Bible says we are what we say.</p>
+
+  <p>Let us, then, shine our light with choice words that are loving and encouraging, befitting the sons and daughters of God and disciples of Christ, the Word of God.</p>
+
+  <h3 class="sub">Wisdom: Humility</h3>
+
+  <p>Humility is perhaps the single most important aspect of wisdom. As part of God&rsquo;s fourth attribute, it is displayed perfectly through Jesus Christ, who, in both word and deed, showed us how to be humble: though he was in very nature God, he made himself nothing, taking the nature of a servant, and humbled himself to the point of death on a cross (Philippians 2:6&ndash;8).</p>
+
+  <p>Unfortunately&mdash;and I may be wrong&mdash;it seems that humility is not emphasized enough within the Church as it should be. Just as Christians without love are unthinkable, Christians without humility are downright nonsensical. Humility is almost as important as love itself, and as such, Christians should be known by it as much as by love.</p>
+
+  <p>The Scripture thus warns heavily against arrogance, the opposite of humility. It is the hardening of the heart where a person relies on their own wisdom that supersedes, if not totally ignores, God&rsquo;s. Right before his martyrdom, therefore, Stephen rebukes his persecutors as a stiff-necked people who always resist the Holy Spirit (Acts 7:51), echoing the warning not to harden our hearts as in the rebellion (Hebrews 3:15b), for God hates pride and arrogance (Proverbs 8:13).</p>
+
+  <p>Many Christians believe that the greatest sin&mdash;and thus that which God hates the most&mdash;is idolatry. While they may be right, it seems the sin runs deeper; at its core lies the arrogant heart that sets oneself up above all else, giving them a free pass, as it were, to selectively serve their own god while neglecting the one true God. When Saul kept the choice animals alive contrary to God&rsquo;s command, Samuel rebukes him: to obey is better than sacrifice, for rebellion is like divination and arrogance like idolatry (1 Samuel 15:22b&ndash;23a). Idolatry begins with arrogance, and as such, it must be weeded out day in and day out, lest we become enemies of God.</p>
+
+  <p>God&rsquo;s great hatred of pride also means God&rsquo;s great love of humility. God searches for a contrite heart in people, for His work cannot truly begin unless we let Him in. Thus says the Lord, &ldquo;Blessed are the poor in spirit, for theirs is the kingdom of heaven&rdquo; (Matthew 5:3). Without humility, there is no obedience, and without obedience, there is only idolatry. If Jesus&rsquo;s life as a man teaches us anything, it is his complete humility that aligned him completely with the Father&rsquo;s will, for he could do nothing by himself but only what he saw the Father doing, seeking not his own glory but the will of the one who sent him (John 5:30).</p>
+
+  <p>And indeed, Jesus constantly showed what humility looked like through his life and ministry. Though he was the Son of the Most High and had every right to be served, he did not assume such a position. On the contrary, he served those he loved to the end, teaching that whoever wants to become great must be a servant, just as the Son of Man came not to be served but to serve (Matthew 20:26b&ndash;28), and that whoever takes the lowly position of a child is the greatest in the kingdom of heaven (Matthew 18:3&ndash;4).</p>
+
+  <p>According to Jesus, therefore, those who lack humility can neither enter nor inherit the kingdom of God. Jesus&rsquo;s Sermon on the Mount and Beatitudes further confirm this, for no one with an arrogant heart can expect to meet these conditions. From the beginning to the end, humility is an obvious prerequisite for each of the eight blessings (Matthew 5:3&ndash;9). Being spiritually poor refers to someone who is in need of spiritual nourishment. An arrogant person does not admit to a need, cannot truly mourn, cannot be meek, cannot hunger for righteousness while already overflowing with their own, cannot understand mercy, is far from the purity that comes from the fear of God, and invites conflict rather than peace. Humility, then, is the beginning of blessings, as it is a defining marker of Christians.</p>
+
+  <p>As one of the earliest books in the Bible and wisdom literature, the Book of Job&rsquo;s primary lesson is also humility. Job had everything one could ever want, and was blameless in God&rsquo;s sight (Job 1:1). But when Satan struck him with God&rsquo;s permission, it revealed the one thing he lacked: absolute humility. Three friends come to comfort him but share his one-dimensional view of God, and after their exchanges, a fourth and younger voice, Elihu, speaks&mdash;the only one among Job&rsquo;s companions not condemned by God at the story&rsquo;s end (Job 32:6; 42:9).</p>
+
+  <p>From the very beginning, Elihu comes onto the scene bearing humility, admitting his youth and his fear of speaking before his elders, but insisting that it is the breath of the Almighty, not age, that gives understanding (Job 32:6b&ndash;8). Confirming what Job and his friends already know about God&mdash;that God is just&mdash;Elihu explains that wickedness is fundamentally a turning away from God with no regard for His ways, and that God&rsquo;s silence toward suffering often reflects the arrogance of the wicked (Job 34:26&ndash;27; 35:12; 36:8&ndash;9). The righteous, by contrast, are those who listen to correction and repent, their hearts humbled and open to God (Job 36:10, 15).</p>
+
+  <p>As Elihu concludes, he emphasizes humility once again, describing God as exalted in power yet never oppressive in His justice, having regard for all who are &ldquo;wise in heart&rdquo; (Job 37:23&ndash;24). When God finally speaks, Job makes his final confession, admitting he spoke of things too wonderful for him to know, and that having now seen God with his own eyes, he repents in dust and ashes (Job 42:2&ndash;6).</p>
+
+  <p>That the wisdom of God as the Word of God can only come from humility is also testified by the rest of the Scripture. Abraham, known for his unwavering faith, was chosen by God because he was, first of all, humble, and this humility became the foundation for all his subsequent obedience&mdash;leaving home for the unknown, yielding the better land to his nephew, offering his son, bowing before the local Hittites even as a man of standing, and walking faithfully with God all his days (Genesis 12:1&ndash;3; 13:9; 22:3; 23:12&ndash;15; 24:1).</p>
+
+  <p>The story of Hannah, Samuel&rsquo;s mother, also teaches us the importance of humility. Barren and humiliated by her rival, Hannah pours out her soul before God rather than helping herself, and when He answers her, she praises Him as the one who humbles and exalts, who brings death and makes alive (1 Samuel 1:15; 2:3&ndash;7).</p>
+
+  <p>For God to work in us, therefore, humility is essential. For Christ to be the living Word in our lives, humility is nonnegotiable. Without humility, we simply cannot experience the wisdom of God as we are blinded by our own loftiness. Arrogance grieves the Holy Spirit&mdash;as it did at the Tower of Babel, where the builders sought to make a name for themselves and were scattered for it, and at Sodom and Gomorrah, whose pride blinded them even to the presence of angels (Genesis 11:4, 9; 19:5).</p>
+
+  <p>Besides the ones mentioned above, there remains a host of biblical figures&mdash;men and women of God&mdash;whose lives show clear signs of humility one way or another, all leading to wisdom, Moses foremost among them, described as more humble than anyone else on the face of the earth (Numbers 12:3). The Prophet Micah thus proclaims what the LORD requires: to act justly, to love mercy, and to walk humbly with God (Micah 6:8). Indeed, God has shown us how to live humbly through Jesus Christ, and through Christ, He has further shown just how closely wisdom is related to humility, as James writes that the wise show it by good lives, by deeds done in the humility that comes from wisdom (James 3:13).</p>
+
+  <p>As Paul says, Christ is the power of God and the wisdom of God (1 Corinthians 1:24). And the Word is calling out to us today to be humble, so that we can live out this power and this wisdom of God. With a smidge of exaggeration, humility is everything.</p>
+
+  <h3 class="sub">Wisdom: The Fear of God</h3>
+
+  <p>The Scripture makes quite a few references to the fear of God. While it can be understood as holy fear, the term seems to carry a meaning that goes well beyond just that. Connected to humility, it points us toward God&rsquo;s wisdom as revealed in Jesus Christ. Thus writes the author of Proverbs: &ldquo;The fear of the LORD is the beginning of wisdom, and knowledge of the Holy One is understanding&rdquo; (Proverbs 9:10). Therefore, the fear of God&mdash;as a component of God&rsquo;s wisdom&mdash;is not meant to instill terror in us per se but rather an authentic reverence exclusively reserved for God&rsquo;s dominion. It is through this fear that we can truly begin to understand the depth of God&rsquo;s wonderful wisdom and love.</p>
+
+  <p>As briefly mentioned above, it is impossible to talk about the fear of God without saying something about humility. While all six names of God&rsquo;s wisdom are interrelated as they singularly point to Christ, the fear of God and humility go especially hand in hand as they are nearly synonymous. The only point of distinction between the two is that while humility is a general heart condition, the fear of God is more specific as it also relates to God&rsquo;s holiness and justice.</p>
+
+  <p>Because she feared God, Rahab and her family were spared from destruction and joined God&rsquo;s holy nation (Joshua 6:25). Because she feared God, Esther was able to save her people from genocide (Esther 4:16). Because he feared God, Joseph was able to resist temptation and save countless lives from famine (Genesis 39:9). Because they feared God, Daniel and his friends were able to retain their identities and serve as top officials in a foreign land (Daniel 1&ndash;3). Because they feared God, the people of Nineveh repented and were spared (Jonah 3:6&ndash;10).</p>
+
+  <p>As the above examples illustrate, the fear of God leads to life and wisdom, away from destruction and anxieties. Although the fear of God is already significant for its close connection to God&rsquo;s first two attributes, its true value as wisdom of God rests in its life-changing, life-giving quality. A person who has no fear of God cannot hope to attain holiness nor justice, but most importantly, that person is utterly incapable of living according to the will of God that leads to life&mdash;for as Paul writes, there is no one righteous, no one who seeks God, and no fear of God before their eyes (Romans 3:10b&ndash;18).</p>
+
+  <p>Previously, we were all such people when we did not know God. After all, how can someone even fear the One they do not know? Consequently, we lived a life of debauchery&mdash;even if it seemed moral in our own eyes and alright by the standard of the world&mdash;and lived according to our own laws and principles with our knowledge as our own idol. But not anymore, for we were washed, sanctified, and justified in the name of the Lord Jesus Christ (1 Corinthians 6:11).</p>
+
+  <p>There is a rather humorous saying in Korea. When someone cannot distinguish between two similar yet completely different things, they are said to be incapable of telling apart dung from doenjang, or fermented soybean paste; the two look similar in color and texture, but the former is obviously unclean and inedible while the latter is quite edible and healthy for the body. Any sensible person would be able to tell the difference, but a fool cannot. In the same way, a sensible person who fears God is able to tell the difference between what brings life and what brings death.</p>
+
+  <p>In the Old Testament, God&rsquo;s resilient love for His people is painfully evident. This love is quite like parental love in that, rain or shine, it always longs for the children to have a good life. And in order to have a good life, God knows too well that they need to follow certain rules to remain connected to Him, the source of all things good. Unfortunately, the Israelites keep on rebelling against God, losing sight of their fear of God, and God calls them foolish and senseless, having eyes that do not see and ears that do not hear, their stubborn hearts having turned aside from Him who provides rain and harvest in season (Jeremiah 5:21&ndash;25).</p>
+
+  <p>The good God is always eager to provide His sheep with good things. He wants to shower them with rich blessings, for if we, though evil, know how to give good gifts to our children, how much more will our Father in heaven give good gifts to those who ask him (Matthew 7:11). But not many of us end up enjoying the good gifts of God because we often fail to fear God. Yes, Jesus preached love and commanded us to love, but he did not do so at the expense of the fear of God, warning us not to fear those who can only kill the body, but the One who can destroy both soul and body (Matthew 10:28).</p>
+
+  <p>Some might ask about 1 John 4, which says perfect love drives out fear. Indeed, true and perfect love drives out fear. This love, however, must be seen as that of compassion, as discussed in the last chapter. When our hearts are connected to God&rsquo;s heart, we have no reason to fear God and His judgment because we know we are family, having been adopted as God&rsquo;s children through Jesus&rsquo;s blood, so that Jesus is not ashamed to call us brothers and sisters (Hebrews 12:14 [sic]; 1 John 4:17&ndash;18).</p>
+
+  <p>Even though the Holy Spirit constantly intercedes for us, we are also constantly under attack while remaining in the flesh, making the possibility of a fall still a very real possibility, for our enemy prowls like a roaring lion looking for someone to devour (1 Peter 5:8). The fear of God, therefore, is still a must-have for the saved as both a key and a safe lock, as it were, to unlock and guard our treasure, which is the wisdom of God (Isaiah 33:5&ndash;6).</p>
+
+  <p>Lastly, concerning the fear of God, there is the somewhat popular phrase among Christians: &ldquo;Once saved, always saved.&rdquo; This could not be further from the truth, as it is an act of open defiance against the holy God and His sole authority on the matter. We must stay vigilant to keep ourselves and our humility in check before God, continuing our fight against pride at all costs, working out our salvation with fear and trembling, for it is God who works in us to will and to act according to His good purpose (Philippians 2:12&ndash;13).</p>
+
+  <p>Admittedly, we are weak in the flesh, and there may be a lot of slip-ups along the way. This should not be a put-down for us, however, because it is only natural for toddlers to fall until they learn how to walk properly. What matters is the state of our heart and mind toward God. If we remain in Him and He in us, salvation is no longer a question but a conviction. Just as love covers a multitude of sins, the fear of God is overcome&mdash;not gone&mdash;by the love of God in its completeness, a love from which nothing in all creation can separate us (Romans 8:38&ndash;39).</p>
+
+  <p>Created in the image of God, we are given the freedom of choice. So, when a fork of two paths presents itself, we ought to choose that which is godly and good out of our fear and love of God. Such is the wisdom of God through Christ, made complete by the Holy Spirit, and it is marvelous to look at as it is a living worship pleasing to God.</p>
+
+  <h3 class="sub">Wisdom: Peace</h3>
+
+  <p>Another keyword that describes the wisdom of God is peace. Hence the song of angels concerning the Good News: &ldquo;Glory to God in the highest heaven, and on earth peace to those on whom his favor rests&rdquo; (Luke 2:13). The Prophet Isaiah also foretells Christ&rsquo;s birth, naming him Wonderful Counselor, Mighty God, Everlasting Father, Prince of Peace, whose government and peace will have no end (Isaiah 9:6&ndash;7).</p>
+
+  <p>Thus, for those who believe, the Word of God that became flesh is the peace of God that bridges us to the Trinity, as much as it is the ultimate symbol of God&rsquo;s wisdom. While there had been mediators in the past before Christ, they were there only for a moment, while Christ is eternal. The priests, the prophets, the judges, and the kings all had their turns interceding on behalf of the people, but their human nature&mdash;comprising the penchant for sin and the physicality that decays&mdash;could only bring about momentary peace. The need for a more permanent mediator was clear, yet the requirements were almost impossible, since none is righteous, none seeks God, and none does good (Romans 3:10b&ndash;12).</p>
+
+  <p>It had to be God, who is both blameless and eternal, to bring about the peace the whole creation desperately needed&mdash;peace that lasts. The Son of God, therefore, laid down all his heavenly glory to be the humblest of humans, to become the Prince of Peace. With humility and obedience, he became the ultimate mediator between us and God so that we may enter God&rsquo;s rest as His own, entering the Most Holy Place once for all by his own blood and obtaining eternal redemption (Hebrews 9:11&ndash;14).</p>
+
+  <p>The Gospel, then, is essentially God&rsquo;s grand redemptive story that brings peace to all who believe. This peace has been made possible through Christ and Christ alone, the Word that became flesh, who has become to those God has called both a stumbling block and the very power and wisdom of God (1 Corinthians 1:23).</p>
+
+  <p>Through his atonement, Christ made peace with God on behalf of us, the sinners. The term &ldquo;peace,&rdquo; therefore, is often used by Jesus and the apostles in their greetings. After his resurrection, Jesus appears to the disciples with the words, &ldquo;Peace be with you!&rdquo; sending them as the Father sent him (John 20:19b, 21b). Likewise, the apostles use the term almost without fail in their epistles, mentioning it at the beginning, the end, or both&mdash;a reminder of the authority by which they write and, at the same time, a glorification of the one who made such peace possible.</p>
+
+  <p>Concerning this peace, Jesus tells the disciples plainly, right at the moment of his betrayal, &ldquo;Peace I leave with you; my peace I give you&rdquo; (John 14:27), and later reassures them that though they will have trouble in this world, he has overcome the world (John 16:33). As Paul notes, this peace is that which &ldquo;transcends all understanding&rdquo; and guards our hearts and minds in Christ Jesus (Philippians 4:7). It is indeed the wisdom of God.</p>
+
+  <p>Perhaps this peace can also be explained in the following terms. Having an understanding of how something works, or having the knowledge of what is coming can be a great relief. It can be the peace of mind that the person desperately needs. Likewise, uncertainties can plant a seed of anxiety that can destroy someone from within. Knowing the triune God and their unique roles in our salvific history can be that understanding and knowledge that gives peace. In particular, the knowledge of the Word and the mystery of the cross can truly enable someone to overcome the world and its full force of different kinds of anxieties. This is the wisdom of God.</p>
+
+  <p>For an ordinary human being, perhaps the greatest source of anxiety is the problem of evil. More specifically, it is the fruits of evil, which are sin and death. That God sent His only Son to resolve this impossible problem should be a great relief to anyone who hears it, as we all face the same conundrum daily and head toward death every minute and every second. For Christians, therefore, Christ becomes a unique power by which we overcome all the anxieties of the world, as his victory against sin and death rings loud and clear for all generations. Paul describes this peace as one that has destroyed the dividing wall of hostility, reconciling two peoples into one new humanity through the cross, giving both access to the Father by one Spirit (Ephesians 2:13&ndash;18).</p>
+
+  <p>Christ being our shalom, we can now live with confidence regarding the future and even look forward to Judgment Day. Through Christ, we can boldly enter the throne room of God because his blood washes us clean before the holy God. Because Christ rose from the dead, we can rest assured that sin and death no longer have power over us. On the contrary, we know with absolute certainty we will reign with Christ forever, no longer foreigners and strangers but fellow citizens with God&rsquo;s people, built together into a holy temple in which God lives by His Spirit (Ephesians 2:19&ndash;22).</p>
+
+  <p>If Christ is the peace of God, bringing peace to heaven and earth, Christ-followers should also be known for peace. Jesus teaches us through the Beatitudes: &ldquo;Blessed are the peacemakers, for they will be called children of God&rdquo; (Matthew 5:9). Put differently, those who stir up trouble do not belong to Christ, for they lack the wisdom that leads to peace, their tongues sharp as serpents, their mouths full of cursing and deceit, the way of peace unknown to them (Psalm 140:1&ndash;3; Romans 3:13&ndash;18).</p>
+
+  <p>Peace, as taught by Jesus, does not make us instant doormats for others to step all over us&mdash;that would be a perversion of justice and quite ungodly. True peace comes from practicing compassionate justice as exemplified by the cross and is to be executed holistically with each divine attribute as a visible sign. When someone wrongs us, we readily forgive, just as in Christ God forgave us. When a brother or sister deviates from the path that leads to life, we gently let them know and not in a judgmental way; if the Holy Spirit is still in them, He will convict their hearts to repent; if not and they refuse to listen, we pray for God&rsquo;s mercy in their lives while we do our best not to become a further snare to them in any way.</p>
+
+  <p>Imitating Christ entails cultivating a number of godly qualities that lead to sanctification, and one sure quality is making peace through compassion and justice, since where there is strife, there is neither peace nor wisdom. As it is written, &ldquo;the wisdom that comes from heaven is first of all pure; then peace-loving, considerate, submissive, full of mercy and good fruit, impartial and sincere&rdquo; (James 3:17).</p>
+
+  <h3 class="sub">Wisdom: Life</h3>
+
+  <p>As one of the earliest books in the Scripture, the Book of Job is filled with descriptions of God that are perhaps the most impactful in the Bible. One such description has to do with God&rsquo;s wisdom, which is closely connected to His life-giving power. Knowing God&rsquo;s undisputed sovereignty over matters of life and death, Job is able to avoid sinning against the holy God when calamity arrives. Rather than spewing curses against the throne in heaven, Job praises God, confessing that in His hand is the life of every creature, and that to God belong wisdom and power (Job 1:21; 12:10, 13).</p>
+
+  <p>From the very beginning, the Scripture makes it clear that there is only one true God and one Creator. No one is like Him, for all life begins with Him and is found in Him. Not a single sparrow goes unnoticed by God (Matthew 10:29). In this sense, the power of life is quite like holiness in that it is exclusive to God; God, and only God, commands life, just as He, and only He, commands holiness. And this life, which is a common theme in the Scripture, refers to not only life here on earth but also life after the earth that lasts.</p>
+
+  <p>Quite naturally, the profound mystery of the Trinity reveals much about God&rsquo;s unique, life-giving power. More specifically, the Scripture emphasizes the connection between Jesus, the Son of God, and life. The Gospel of John begins with vocabulary that must have been carefully selected with the intention of highlighting this connection: in him was life, and that life was the light of all mankind (John 1:1&ndash;5). Similar to this passage, the personified Wisdom in Proverbs declares that she was brought forth as the first of God&rsquo;s works, and that those who find her find life, while those who fail to find her harm themselves (Proverbs 8:22&ndash;23, 35&ndash;36).</p>
+
+  <p>The Scripture, therefore, is far from ambiguous when it comes to Jesus being the Word of God and the Wisdom of God, in whom pure life is hidden, waiting to be discovered. Thus, when a person finds Jesus, they not only find the Son of God but also the Wisdom of God that comes with the promise of eternal life. This is why Jesus teaches, &ldquo;I am the way and the truth and the life. No one comes to the Father except through me&rdquo; (John 14:6b).</p>
+
+  <p>Because life as it is found in Jesus is not simply a life on earth but one that continues to heaven, it essentially involves the spirit. Consequently, when Jesus is asked about the &ldquo;living water&rdquo; by the Samaritan woman, he tells her that whoever drinks the water he gives will never thirst again, for it becomes in them a spring welling up to eternal life (John 4:13b&ndash;14). Realizing that the man she has been talking to is the Messiah, she immediately invites the whole town to meet Jesus for themselves, and many of them believe (John 4:28&ndash;30, 39&ndash;42).</p>
+
+  <p>During a baptism, the candidate enters the water and rises up again. It is a symbol of rebirth in God through Christ, in whom is life. At the peak of his ministry, John the Baptist tells the crowd that he baptizes with water, but one more powerful than he will baptize with the Holy Spirit and fire (Matthew 3:11). What John is saying here is that the life that Jesus gives is not some copy or a semblance of that which is authentic; the life that Jesus gives is the life as personally created by God, made available through Christ, and perfected by the Holy Spirit, gathering the wheat into the barn while burning the chaff with unquenchable fire (Matthew 3:12).</p>
+
+  <p>Though it is said that God so loved the world and gave His one and only Son that whoever believes shall not perish but have eternal life, we must not forget that it is also said, &ldquo;For many are invited, but few are chosen&rdquo; (John 3:16; Matthew 22:14). In a market economy, commodities are bought and sold based on their value, but can anyone dare put a price tag on eternal life? Despite it being the most precious thing, it is freely given as long as one &ldquo;believes&rdquo; in the Son whom God sent, crossing over from death to life (John 5:24). In other words, rejecting the Son is like willingly giving up the most precious item one can ever find. As absurd as it sounds, it is possible because of the hardness of the heart and a misplaced trust in themselves that supersedes God&rsquo;s wisdom.</p>
+
+  <p>Jesus teaches that the Father has placed everything in the Son&rsquo;s hands, and whoever believes in the Son has eternal life, but whoever rejects the Son will not see life, for God&rsquo;s wrath remains on them (John 3:35&ndash;36). Therefore, to gain Christ&mdash;the Wisdom of God&mdash;is to gain life, and to lose Christ is to lose life. Humility, already discussed as the second name of Wisdom, is the key to receiving this priceless gift that is in Christ Jesus. Without it, there is no hope for life, as there is no room for the life-giver.</p>
+
+  <p>As discussed in the chapter on holiness, no one who is unholy can approach God who is holy, let alone enter His rest. It is always a reminder that Jesus Christ, the Son of God, has become that holiness for us, so that we may have life through him, for Christ has become for us wisdom from God&mdash;our righteousness, holiness, and redemption (1 Corinthians 1:30).</p>
+
+  <p>The kingdom of heaven, according to Jesus, is like treasure hidden in a field. When a man found it, he hid it again, and then in his joy went and sold all he had and bought the field. He knew its value far exceeded everything he had ever owned and would ever own. This treasure is Jesus, and we must pursue him with everything we have, though it cost us all we have (Proverbs 4:7).</p>
+
+  <p class="refrain">God is good. God is Wisdom. God is life.<sup>6</sup></p>
+
+  <h3 class="sub">Wisdom: Suffering</h3>
+
+  <p>The last name of wisdom, and perhaps the most unlikely one of all, is suffering. It seems a lot of Christians today, especially in developed countries, seek God for their own advancement and prosperity. Some church leaders even promote this version of Christianity and people are glad to hear it! But this version of Christianity is, at the very least, a misinterpretation of the Word, if not a downright perversion.</p>
+
+  <p>As Paul writes to the Philippians, it has been granted to believers not only to believe in Christ but also to suffer for him (Philippians 1:29&ndash;30). Becoming a Christian does not mean the person will no longer suffer. On the contrary, it is expected that suffering will continue. There is a difference, however. Instead of something to be dreaded, suffering becomes, for a Christian, something to be celebrated as a sign of God refining us toward spiritual maturity. Job encapsulates this spiritual take on suffering when he makes the confession, &ldquo;But he knows the way that I take; when he has tested me, I will come forth as gold&rdquo; (Job 23:10).</p>
+
+  <p>Now, to understand suffering and how it is related to God&rsquo;s wisdom, it is important to first unpack what it entails. Certain things go hand in hand, like a needle and a thread, and when it comes to suffering, glory follows right behind. Job&rsquo;s confession above is an example. The &ldquo;gold&rdquo; signifies the glory that is to come after he is properly &ldquo;tested.&rdquo; It is in this process that God&rsquo;s wisdom is revealed, as the one who is tested revels in that which comes after; it outweighs any of the previous trials by far as it also outshines any of the joys previously known.</p>
+
+  <p>God&rsquo;s wisdom is demonstrated through suffering as it undergoes the radical transformation that leads to glory. Through this process, an imperfect being is shaped into the original image of God and made perfect&mdash;holy as God is holy. In this regard, sanctification rarely occurs without pain, just as growing children often experience pain as they reach adulthood.</p>
+
+  <p>Not many would ask for suffering, but for believers, it can be a channel through which one can experience something divine. For example, when Jesus&rsquo;s disciples see a man who was born blind, they ask who sinned, this man or his parents. They were only familiar with the God of Justice, and immediately, they linked physical suffering with sin and punishment. Seeing their rather narrow view on suffering, Jesus answers that neither the man nor his parents sinned, but that this happened so that the works of God might be displayed in him (John 9:2&ndash;3). Jesus, who is the Wisdom of God, reveals that suffering is not always a result of sin&mdash;though it can be&mdash;but can also be God&rsquo;s hand at work that brings sanctification and salvation for the person, and glory unto God Himself.</p>
+
+  <p>The Bible is filled with such men and women of faith whose suffering God turned into glory as they are refined, as it were, in the original image of God as was intended in creation. Joseph suffered abandonment, betrayal, slavery, and false imprisonment, yet God placed him second in command in Egypt to save countless lives, including his own family, so that he could say to his brothers, &ldquo;You intended to harm me, but God intended it for good&rdquo; (Genesis 50:19b&ndash;21a). Moses suffered loneliness, misunderstanding, exile, and decades of obscurity tending sheep, yet God turned his suffering into glory by anointing him leader of Israel and revealing His wonders through him, for Moses had become &ldquo;a very humble man, more humble than anyone else on the face of the earth&rdquo; through suffering that was long and arduous but, in the end, glorious (Numbers 12:3).</p>
+
+  <p>Samson, greatly humiliated by his enemies, was received by God in his contrite final prayer and given one last victory greater than any before (Judges 16:30b). Ruth, a widowed foreigner with nothing, was raised by God through Boaz to become the great-grandmother of King David and an ancestress of Jesus, celebrated by the women of the town as better to Naomi than seven sons (Ruth 4:14b&ndash;15). The list goes on&mdash;Rachel, Gideon, Hannah, David, Solomon, Jonah, Esther, Mordecai, Elijah, Hezekiah, even King Nebuchadnezzar&mdash;living in vastly different times and places, but their stories all echo the same message: God uses suffering to refine us into His glory.</p>
+
+  <p>Jesus, the Word and Wisdom of God, is the greatest example of all. He, who had no sin, suffered on our behalf so we could live and not die. When he obeyed until the end and gave up his spirit on that cross, therefore, God glorified the Son, and the glory was the Father&rsquo;s also, exalting him to the highest place and giving him the name above every name (Philippians 2:6&ndash;11). The entire chapter of Isaiah 53 also paints a picture of Jesus suffering&mdash;despised, rejected, a man of suffering, pierced for our transgressions, crushed for our iniquities, the punishment that brought us peace upon him, and by his wounds we are healed (Isaiah 53:3&ndash;6).</p>
+
+  <p>Indeed, God the Father did not leave the Son in death but brought him back to life and turned the suffering into the greatest glory of all time. As the author of Hebrews writes, Jesus was made lower than the angels for a little while and is now crowned with glory and honor because he suffered death, so that by the grace of God he might taste death for everyone (Hebrews 2:9), and it was fitting that God should make the pioneer of our salvation perfect through what he suffered (Hebrews 2:10). The power of sin that had held us captive since the time of Adam was finally broken&mdash;not by something that is already glorious, but by a sacrifice that entailed unimaginable suffering.</p>
+
+  <p>Furthermore, Christ&rsquo;s suffering and the glory it accompanies have an intrinsic salvific value. They breathe life, which is yet another name for wisdom, into those who are perishing, a salvation the prophets searched intently to understand, even angels longing to look into these things (1 Peter 1:10&ndash;12).</p>
+
+  <p>Christ, the Son of God, thus manifests himself in every way as the very Wisdom of God; he is the Word that became flesh; he taught humility and the fear of God by example; he laid down his life to restore peace between heaven and earth, so that we can have life everlasting through him; he endured much suffering to bring God&rsquo;s kingdom to earth&mdash;marked by greater holiness, justice, and compassion&mdash;and God the Father glorified the Son for his obedience unto death. The Gospel, therefore, is the story of Christ, who is &ldquo;the power of God and the wisdom of God&rdquo; (1 Corinthians 1:24b).</p>
+
+  <p>And when Jesus said on the cross, &ldquo;It is finished,&rdquo; it was the moment the Wisdom of God overcame the world (John 19:30). Through Jesus, who is the complete embodiment of God, the world came to know God unlike it has ever known, for the Son goes further than simply encapsulating God in the flesh; while being the perfect representation of all the tenets of God&rsquo;s wisdom, the Son is the perfect reflection of God the Father in all His attributes: holiness, justice, compassion, and wisdom.</p>
+
+  <p>In this divine tapestry, everyone is called to join in and enter the glory of God. Christ took care of the hardest part. Like he said, it is finished. All we have to do is say &ldquo;yes&rdquo; to the invitation. However, this does not mean the road ahead will be without challenges; we know from Scripture that it is for our own good. As Paul writes, if we are children, we are heirs of God and co-heirs with Christ, if indeed we share in his sufferings in order that we may also share in his glory (Romans 8:17), and our present sufferings are not worth comparing with the glory that will be revealed in us (Romans 8:18).</p>
+
+  <p>By now it should be noted that suffering cannot be taken simply as a means of glory. The true value of suffering as it relates to God&rsquo;s wisdom is that it produces humility, without which no one can enter the kingdom of God. Humility, therefore, must come between suffering and glory for the latter to count, or one merely suffers for themselves, which lacks eternal value. What good is a million people praising you for your suffering or sacrifice when God, who has the final say, gives you a rebuke? You would have suffered for nothing (Matthew 16:26).</p>
+
+  <p>The psalmist writes, &ldquo;For the LORD takes delight in his people; he crowns the humble with victory&rdquo; (Psalm 149:4). Jesus also teaches that those who exalt themselves will be humbled, and those who humble themselves will be exalted (Matthew 23:12). So then, here is a truth: all glory is God&rsquo;s, as all good things come from God. Humility is the key that unlocks the heart of God, for He opposes the proud but shows favor to the humble (James 4:6b).</p>
+
+  <p>Consequently, suffering may be said to have two tracks: one that involves humility, which leads to glory, and one that involves arrogance, which leads to disgrace. In the first, people encounter suffering and respond, or learn to respond, with humility, and though public praise may follow, they refrain from boasting and instead display even greater gratitude toward God and people&mdash;a cycle that culminates in true glory in heaven through sanctification, the original image of God restored. In the second, people respond to suffering with pride, refusing to acknowledge any higher power, and any earthly glory that falls into their laps only feeds their arrogance, hardening their hearts like Pharaoh&rsquo;s until they become as lifeless as the idols they trust in&mdash;deaf, blind, and mute (Psalm 115:5&ndash;9). Like a plant that needs water to grow, our soul needs humility to mature. Nothing is too hard for God, but He will not work with those whose hearts are obstinate.</p>
+
+  <p>Does this mean God gives up on some of us? Not so! John 3:16 makes it crystal clear that God wants everyone to be saved. What suffering does to us, then, is this: it detaches us from the world to which we find ourselves growing overly attached. God uses suffering like a scalpel to carve out the parts that must go, so that we can live and not die. Jesus teaches that whoever wants to be his disciple must deny themselves and take up their cross, for whoever wants to save their life will lose it, but whoever loses their life for him will find it (Matthew 16:24b&ndash;25). Suffering gives us perspective on what truly matters. It is wisdom.</p>
+
+  <p>Despite the good it can do, suffering is still suffering; it is not a walk in a park. Thankfully, the Scripture tells us that suffering lasts only for a while, achieving for us an eternal glory that far outweighs it (2 Corinthians 4:17). The psalmist writes that it was good for him to be afflicted so that he might learn God&rsquo;s decrees (Psalm 119:17), and Job confesses that blessed is the one whom God corrects (Job 5:17). The Apostle Paul also exhorts that suffering produces perseverance, perseverance produces character, and character produces hope (Romans 5:3&ndash;5).</p>
+
+  <p>To anyone who may be tempted to think God is a sadist for allowing suffering in the world, I must say that God certainly does not delight in it. Instead, God asks through Ezekiel whether He takes any pleasure in the death of the wicked, rather than being pleased when they turn from their ways and live (Ezekiel 18:23). God allows suffering so that we may be made perfect in His image and be holy, disciplining us for our good so that we may share in His holiness, producing a harvest of righteousness and peace for those trained by it (Hebrews 12:10&ndash;12).</p>
+
+  <p>God wants us to know Him better, not because He needs our attention but because knowing Him is critical to our own well-being, as He humbled Israel in the wilderness, feeding them with manna to teach them that man does not live on bread alone but on every word from the mouth of the Lord (Deuteronomy 8:3&ndash;5). God did not spare Jesus, His only Son, because He knew it was only through the Son that we could know the Father. Afterward, the Son sent the Holy Spirit in order for us to have daily communion with the Trinity. Without a shred of doubt, we have never been so close to God as we are today, and the name Immanuel has never rung truer in all of history.</p>
+
+  <p>Surely, not all suffering is the rod of God; some may indeed be God&rsquo;s just punishment being carried out presently. What remains unchanged, however, is how our response ought to be. Will it be humility that leads to glory? Or will it be pride that leads to shame? The choice is ours and ours only. This is also a gift of God.</p>
+
+  <p>Life is not always a smooth sail. In fact, it can be quite cruel and unbearable. Still, every day is a day we ought to spend emulating God. We were given free will to do just that: to perfect the image of God in us. To this end, I did my best to describe God&rsquo;s character using the language of four attributes, as witnessed in the Bible. We are to be holy as God is holy, since holiness is what sets the boundary line of that which is good. Without holiness, there is nothing good, and where there is nothing good, there is only hell. The question is, how can we be holy as God is holy? God answers through His prophet Micah, &ldquo;He has shown you, O mortal, what is good. And what does the Lord require of you? To act justly and to love mercy and to walk humbly with your God&rdquo; (Micah 6:8). We are to love and practice, on a daily basis, justice, compassion, and wisdom in the name of God, the Son, and the Holy Spirit. Most importantly, we must remember Jesus Christ, who has become for us a literal embodiment of all of the above to show us the way, the truth, and the life. Apart from him, we can do nothing.</p>
+
+  <p class="refrain">Finally, I would like to conclude the book with the same phrase I started it with: God is good&mdash;all the time. Amen.</p>
+
+  <ol class="footnotes">
+    <li>See Matthew 22:29&ndash;32.</li>
+  </ol>
+</section>
+
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="eyebrow">About the Author</div>
+    <h2>David Yeom</h2>
+    <p>David is from South Korea, born and raised in a missionary family. The passion God has placed in his heart is what motivates him to write and spread the knowledge of God.</p>
+    <p>Convinced of the truth in John 17:3, David is devoted to increasing the knowledge of God to the best of his abilities and with the help of the Holy Spirit: &ldquo;Now this is eternal life: that they know you, the only true God, and Jesus Christ, whom you have sent.&rdquo;</p>
+    <p>David&rsquo;s Korean name is Sinil, which means great faith. He has earned his BA in Bible &amp; Religion from Anderson University, IN, and MATS in Doctrinal Theology from Regent College, Vancouver, BC.</p>
+  </div>
+</section>
+
+<footer>
+  Wisdom Theology &middot; &copy; 2025 David Yeom &middot; All rights reserved
+</footer>
+
+<script>
+  const fill = document.getElementById('rail-fill');
+  function updateProgress(){
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if (window.matchMedia('(min-width:721px)').matches){
+      fill.style.height = pct + '%';
+      fill.style.width = '100%';
+    } else {
+      fill.style.width = pct + '%';
+      fill.style.height = '100%';
+    }
+  }
+  window.addEventListener('scroll', updateProgress, {passive:true});
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+
+  const navLinks = document.querySelectorAll('nav.links a');
+  const sections = ['ch1','ch2','ch3','ch4','ch5','ch6','about'].map(id => document.getElementById(id));
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        navLinks.forEach(a => a.classList.remove('active'));
+        const match = document.querySelector('nav.links a[href="#' + entry.target.id + '"]');
+        if (match) match.classList.add('active');
+      }
+    });
+  }, {rootMargin:'-45% 0px -50% 0px'});
+  sections.forEach(sec => { if (sec) observer.observe(sec); });
+</script>
+
+</body>
+</html>
