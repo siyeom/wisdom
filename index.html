@@ -170,6 +170,20 @@
   .about h2{color:var(--parchment); font-size:clamp(1.8rem, 4vw, 2.3rem); margin-bottom:1.6rem;}
   .about p{color:rgba(246,240,226,0.78); margin:0 0 1.2rem;}
   .about .eyebrow{color:var(--gold-bright);}
+  .support{
+    background:var(--ink); color:var(--parchment); text-align:center;
+    padding:0 1.6rem 4.5rem;
+  }
+  .support-inner{max-width:var(--measure); margin:0 auto; padding-top:0.5rem; border-top:1px solid var(--rule-dark);}
+  .support p{color:rgba(246,240,226,0.72); max-width:40ch; margin:1.6rem auto 1.8rem; font-size:0.98rem;}
+  .support .paypal-btn{
+    display:inline-flex; align-items:center; gap:0.6rem;
+    background:var(--gold); color:var(--ink);
+    font-family:'IBM Plex Mono', monospace; font-size:0.82rem; letter-spacing:0.04em; text-transform:uppercase;
+    text-decoration:none; padding:0.9rem 1.8rem; border-radius:2px;
+    transition:background 0.2s ease;
+  }
+  .support .paypal-btn:hover{background:var(--gold-bright);}
   footer{
     background:var(--ink); color:rgba(246,240,226,0.45); text-align:center; padding:2.2rem 1.6rem 3rem;
     font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.05em; border-top:1px solid var(--rule-dark);
@@ -853,8 +867,16 @@
     <div class="eyebrow">About the Author</div>
     <h2>David Yeom</h2>
     <p>David is from South Korea, born and raised in a missionary family. The passion God has placed in his heart is what motivates him to write and spread the knowledge of God.</p>
-    <p>Convinced of the truth in John 17:3, David is devoted to increasing the knowledge of God with the help of the Holy Spirit: &ldquo;Now this is eternal life: that they know you, the only true God, and Jesus Christ, whom you have sent.&rdquo;</p>
-    <p>David&rsquo;s Korean name is Sinil, which means "great faith." He has earned his BA in Bible &amp; Religion from Anderson University, IN, and MATS in Doctrinal Theology from Regent College, Vancouver, BC.</p>
+    <p>Convinced of the truth in John 17:3, David is devoted to increasing the knowledge of God to the best of his abilities and with the help of the Holy Spirit: &ldquo;Now this is eternal life: that they know you, the only true God, and Jesus Christ, whom you have sent.&rdquo;</p>
+    <p>David&rsquo;s Korean name is Sinil, which means great faith. He has earned his BA in Bible &amp; Religion from Anderson University, IN, and MATS in Doctrinal Theology from Regent College, Vancouver, BC.</p>
+  </div>
+</section>
+
+<section class="support">
+  <div class="support-inner">
+    <div class="eyebrow">Support This Work</div>
+    <p>If <em>Wisdom Theology</em> has been meaningful to you, consider supporting the author&rsquo;s continued writing and ministry.</p>
+    <a class="paypal-btn" href="https://paypal.me/davidyeom" target="_blank" rel="noopener">Donate via PayPal</a>
   </div>
 </section>
 
